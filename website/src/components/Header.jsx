@@ -4,6 +4,7 @@ const Header = ({ setActivePage, activePage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navItems = ['Home', 'About', 'Services', 'Why Us', 'Pricing', 'After Care', 'Contact'];
 
+
   const NavLink = ({ page }) => (
     <button
       onClick={() => { setActivePage(page.toLowerCase().replace(' ', '-')); setIsOpen(false); }}
@@ -16,6 +17,7 @@ const Header = ({ setActivePage, activePage }) => {
       {page}
     </button>
   );
+
 
   return (
     <nav className="bg-white/80 backdrop-blur-sm fixed w-full z-50 top-0 shadow-md">
@@ -70,5 +72,6 @@ const Header = ({ setActivePage, activePage }) => {
     </nav>
   );
 };
+
 
 export default Header;

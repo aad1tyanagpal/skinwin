@@ -6,16 +6,19 @@ import About from './components/About';
 import Services from './components/Services';
 import WhyUs from './components/WhyUs';
 import Pricing from './components/Pricing';
-import AfterCare from './components/AfterCare';
+import AfterCare from './components/AfterCare/AfterCare.jsx';
 import Contact from './components/Contact';
+
 
 export default function App() {
   const [activePage, setActivePage] = useState('home');
+
 
   useEffect(() => {
     // Scroll to top when page changes
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activePage]);
+
 
   const renderPage = () => {
     switch (activePage) {
@@ -38,6 +41,6 @@ export default function App() {
         {renderPage()}
       </main>
       <Footer setActivePage={setActivePage} />
-    </div>
-  );
+   </div>
+ );
 }
