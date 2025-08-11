@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Header = ({ setActivePage, activePage }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const navItems = ['Home', 'About', 'Services', 'Why Us', 'Pricing', 'After Care', 'Contact'];
+  const navItems = ['Home', 'About', 'Services', 'Results', 'Pricing', 'After Care', 'Contact'];
 
 
   const NavLink = ({ page }) => (

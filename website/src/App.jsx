@@ -4,7 +4,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import About from './components/About';
 import Services from './components/Services';
-import WhyUs from './components/WhyUs';
+import Results from './components/Results'; // Renamed from WhyUs
 import Pricing from './components/Pricing';
 import AfterCare from './components/AfterCare/AfterCare.jsx';
 import Contact from './components/Contact';
@@ -24,7 +24,7 @@ export default function App() {
     switch (activePage) {
       case 'about': return <About />;
       case 'services': return <Services />;
-      case 'why-us': return <WhyUs />;
+      case 'results': return <Results />; // Changed from 'why-us' to 'results'
       case 'pricing': return <Pricing />;
       case 'after-care': return <AfterCare />;
       case 'contact': return <Contact />;
