@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/skinwin/static/css/main.cf890fdb.css",
+    "main.js": "/skinwin/static/js/main.f11fdd26.js",
+    "index.html": "/skinwin/index.html",
+    "main.cf890fdb.css.map": "/skinwin/static/css/main.cf890fdb.css.map",
+    "main.f11fdd26.js.map": "/skinwin/static/js/main.f11fdd26.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf890fdb.css",
+    "static/js/main.f11fdd26.js"
+  ]
+}
