@@ -74,7 +74,7 @@ const resultsData = {
         folder: "Hair Transplant",
         title: "Hair Transplant (FUE/DHI)",
         description: "Natural hairline restoration with advanced techniques",
-        resultCount: 8 // Has subfolders 1-8
+        resultCount: 7 // Has subfolders 1-7
       },
       {
         folder: "Beard Transplant",

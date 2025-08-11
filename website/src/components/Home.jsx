@@ -68,10 +68,10 @@ const Hero = ({ setActivePage }) => (
   <div className="relative bg-[#FBF5E9] text-gray-800 pt-20">
     <div className="absolute inset-0 opacity-10" style={{backgroundImage: `url('https://www.transparenttextures.com/patterns/subtle-zebra-3d.png')`}}></div>
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-48 text-center">
-      <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#B08A40] to-[#C09A50]">
-        The Art of Radiance, Mastered by Science.
-      </h1>
-      <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-600">
+<h1 className="relative z-30 text-4xl md:text-6xl font-extrabold tracking-tight text-[#B08A40] mb-6">
+  The Art of Radiance, Mastered by Science.
+</h1>
+      <p className="relative z-10 mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-600">
         Skin Win is a trusted destination for skin and hair excellence, offering state-of-the-art solutions to help you achieve your desired appearance and regain confidence.
       </p>
       <div className="mt-10 flex justify-center gap-4">

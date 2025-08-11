@@ -8,7 +8,7 @@ import Results from './components/Results'; // Renamed from WhyUs
 import Pricing from './components/Pricing';
 import AfterCare from './components/AfterCare/AfterCare.jsx';
 import Contact from './components/Contact';
-
+import PrivacyPolicy from './components/PrivacyPolicy.jsx'; // New import for Privacy Policy
 
 export default function App() {
   const [activePage, setActivePage] = useState('home');
@@ -28,6 +28,8 @@ export default function App() {
       case 'pricing': return <Pricing />;
       case 'after-care': return <AfterCare />;
       case 'contact': return <Contact />;
+      case 'privacy-policy':
+        return <PrivacyPolicy setActivePage={setActivePage} />; // New case for Privacy Policy
       case 'home':
       default:
         return <Home setActivePage={setActivePage} />;
