@@ -1,45 +1,108 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Footer = ({ setActivePage }) => (
-  <footer className="bg-white border-t border-gray-200">
-    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div>
-          <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">Solutions</h3>
-          <ul className="mt-4 space-y-4">
-            <li><button onClick={() => setActivePage('services')} className="text-base text-gray-600 hover:text-gray-900">Laser Treatments</button></li>
-            <li><button onClick={() => setActivePage('services')} className="text-base text-gray-600 hover:text-gray-900">Skin Care</button></li>
-            <li><button onClick={() => setActivePage('services')} className="text-base text-gray-600 hover:text-gray-900">Hair Restoration</button></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">Clinic</h3>
-          <ul className="mt-4 space-y-4">
-            <li><button onClick={() => setActivePage('about')} className="text-base text-gray-600 hover:text-gray-900">About</button></li>
-            <li><button onClick={() => setActivePage('why-us')} className="text-base text-gray-600 hover:text-gray-900">Why Us</button></li>
-            <li><button onClick={() => setActivePage('pricing')} className="text-base text-gray-600 hover:text-gray-900">Pricing</button></li>
-          </ul>
-        </div>
-        <div>
-           <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">Support</h3>
-          <ul className="mt-4 space-y-4">
-            <li><button onClick={() => setActivePage('after-care')} className="text-base text-gray-600 hover:text-gray-900">After Care</button></li>
-            <li><button onClick={() => setActivePage('contact')} className="text-base text-gray-600 hover:text-gray-900">Contact</button></li>
-            <li><a href="#" className="text-base text-gray-600 hover:text-gray-900">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div className="flex items-start space-x-3 text-gray-800">
-          <svg className="w-10 h-10 text-[#C09A50]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-1.026.977-2.19.977-3.434 0-3.517-1.009-6.799-2.753-9.571M12 21V11"></path>
-          </svg>
-          <span className="font-bold text-2xl tracking-wider">SKIN WIN</span>
-        </div>
-      </div>
-      <div className="mt-8 border-t border-gray-200 pt-8 text-center">
-        <p className="text-base text-gray-500">&copy; 2025 Skin Win Clinic. All rights reserved. Crafted for excellence.</p>
-      </div>
-    </div>
-  </footer>
+const Logo = () => (
+  <div className="flex items-center space-x-2">
+    <svg
+      className="w-8 h-8 text-primary"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
+      ></path>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M12 5v7l4 2"
+      ></path>
+    </svg>
+    <span className="font-semibold text-xl tracking-wide text-text-primary">SKIN WIN</span>
+  </div>
 );
+
+const FooterLink = ({ to, children }) => (
+  <li>
+    <Link to={to} className="text-base text-text-secondary hover:text-primary transition-colors duration-300">
+      {children}
+    </Link>
+  </li>
+);
+
+const SocialIcon = ({ href, children }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-primary transition-colors duration-300">
+    {children}
+  </a>
+);
+
+const Footer = () => {
+  return (
+    <footer className="bg-surface border-t border-gray-200/50">
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          <div className="space-y-8 xl:col-span-1">
+            <Logo />
+            <p className="text-text-secondary text-base">
+              The Art of Radiance, Mastered by Science.
+            </p>
+            <div className="flex space-x-6">
+              <SocialIcon href="#">
+                <span className="sr-only">Facebook</span>
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" /></svg>
+              </SocialIcon>
+              <SocialIcon href="#">
+                <span className="sr-only">Instagram</span>
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm6.406-11.845a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clipRule="evenodd" /></svg>
+              </SocialIcon>
+              <SocialIcon href="#">
+                <span className="sr-only">Twitter</span>
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+              </SocialIcon>
+            </div>
+          </div>
+          <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-text-primary tracking-wider uppercase">Solutions</h3>
+                <ul className="mt-4 space-y-4">
+                  <FooterLink to="/services">Laser Treatments</FooterLink>
+                  <FooterLink to="/services">Skin Care</FooterLink>
+                  <FooterLink to="/services">Hair Restoration</FooterLink>
+                </ul>
+              </div>
+              <div className="mt-12 md:mt-0">
+                <h3 className="text-sm font-semibold text-text-primary tracking-wider uppercase">Clinic</h3>
+                <ul className="mt-4 space-y-4">
+                  <FooterLink to="/about">About</FooterLink>
+                  <FooterLink to="/why-us">Why Us</FooterLink>
+                  <FooterLink to="/pricing">Pricing</FooterLink>
+                </ul>
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-text-primary tracking-wider uppercase">Support</h3>
+                <ul className="mt-4 space-y-4">
+                  <FooterLink to="/after-care">After Care</FooterLink>
+                  <FooterLink to="/contact">Contact</FooterLink>
+                  <FooterLink to="/privacy-policy">Privacy Policy</FooterLink>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mt-12 border-t border-gray-200/50 pt-8">
+          <p className="text-base text-text-secondary text-center">&copy; {new Date().getFullYear()} Skin Win Clinic. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;
