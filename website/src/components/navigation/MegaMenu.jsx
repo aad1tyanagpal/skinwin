@@ -143,12 +143,16 @@ const MegaMenu = () => {
           onMouseLeave={handleMouseLeave}
           className="relative"
         >
-          <button className="flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 text-gray-600 hover:text-[#C09A50]">
+          <Link
+            to={item.path}
+            onClick={() => setIsOpen(false)}
+            className="flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 text-gray-600 hover:text-[#C09A50]"
+          >
             {item.name}
             <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
-          </button>
+          </Link>
           {treatmentsDropdown && (
             <div
               onMouseEnter={handleMouseEnter}
@@ -209,9 +213,13 @@ const MegaMenu = () => {
     <div>
       {item.hasDropdown ? (
         <div>
-          <div className="px-3 py-2 text-base font-medium text-gray-900 border-b border-gray-200">
+          <Link
+            to={item.path}
+            onClick={() => setIsOpen(false)}
+            className="block px-3 py-2 text-base font-medium text-gray-900 border-b border-gray-200 hover:text-[#C09A50] transition-colors"
+          >
             {item.name}
-          </div>
+          </Link>
           <div className="pl-6 space-y-2">
             {item.dropdownItems.map((dropdownItem, index) => (
               <div key={index} className="space-y-1">
