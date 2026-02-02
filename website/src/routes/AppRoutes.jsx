@@ -13,9 +13,7 @@ import Botox from '../pages/treatments/skin-treatments/anti-ageing/Botox';
 import Fillers from '../pages/treatments/skin-treatments/anti-ageing/Fillers';
 import HIFU from '../pages/treatments/skin-treatments/anti-ageing/HIFU';
 import Acne from '../pages/treatments/skin-treatments/skin-concerns/Acne';
-import AcneScars from '../pages/treatments/skin-treatments/skin-concerns/AcneScars';
 import Pigmentation from '../pages/treatments/skin-treatments/skin-concerns/Pigmentation';
-import Melasma from '../pages/treatments/skin-treatments/skin-concerns/Melasma';
 import Mole from '../pages/treatments/skin-treatments/skin-concerns/Mole';
 import Warts from '../pages/treatments/skin-treatments/skin-concerns/Warts';
 import Psoriasis from '../pages/treatments/skin-treatments/skin-concerns/Psoriasis';
@@ -70,9 +68,7 @@ const AppRoutes = () => {
           <Route path="/treatments/skin-treatments/anti-ageing/fillers" element={<Fillers />} />
           <Route path="/treatments/skin-treatments/anti-ageing/hifu" element={<HIFU />} />
           <Route path="/treatments/skin-treatments/skin-concerns/acne" element={<Acne />} />
-          <Route path="/treatments/skin-treatments/skin-concerns/acne-scars" element={<AcneScars />} />
           <Route path="/treatments/skin-treatments/skin-concerns/pigmentation" element={<Pigmentation />} />
-          <Route path="/treatments/skin-treatments/skin-concerns/melasma" element={<Melasma />} />
           <Route path="/treatments/skin-treatments/skin-concerns/mole" element={<Mole />} />
           <Route path="/treatments/skin-treatments/skin-concerns/warts" element={<Warts />} />
           <Route path="/treatments/skin-treatments/skin-concerns/psoriasis" element={<Psoriasis />} />

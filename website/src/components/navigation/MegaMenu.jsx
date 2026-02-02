@@ -51,8 +51,7 @@ const MegaMenu = () => {
               category: 'Skin Concerns',
               items: [
                 { name: 'Acne', path: '/treatments/skin-treatments/skin-concerns/acne' },
-                { name: 'Acne Scars', path: '/treatments/skin-treatments/skin-concerns/acne-scars' },
-                { name: 'Pigmentation', path: '/treatments/skin-treatments/skin-concerns/pigmentation' },
+                { name: 'Pigmentation & Melasma', path: '/treatments/skin-treatments/skin-concerns/pigmentation' },
                 { name: 'Melasma', path: '/treatments/skin-treatments/skin-concerns/melasma' },
                 { name: 'Mole', path: '/treatments/skin-treatments/skin-concerns/mole' },
                 { name: 'Warts', path: '/treatments/skin-treatments/skin-concerns/warts' },

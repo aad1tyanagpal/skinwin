@@ -52,10 +52,8 @@ const SkinTreatments = () => {
     {
       title: 'Skin Concerns',
       treatments: [
-        { name: 'Acne Treatment', path: '/treatments/skin-treatments/skin-concerns/acne' },
-        { name: 'Acne Scars', path: '/treatments/skin-treatments/skin-concerns/acne-scars' },
-        { name: 'Pigmentation', path: '/treatments/skin-treatments/skin-concerns/pigmentation' },
-        { name: 'Melasma', path: '/treatments/skin-treatments/skin-concerns/melasma' },
+        { name: 'Acne & Scars Treatment', path: '/treatments/skin-treatments/skin-concerns/acne' },
+        { name: 'Pigmentation & Melasma', path: '/treatments/skin-treatments/skin-concerns/pigmentation' },
         { name: 'Mole Removal', path: '/treatments/skin-treatments/skin-concerns/mole' },
         { name: 'Warts Removal', path: '/treatments/skin-treatments/skin-concerns/warts' },
         { name: 'Psoriasis Treatment', path: '/treatments/skin-treatments/skin-concerns/psoriasis' },
