@@ -13,7 +13,7 @@ const HeroCarousel = () => {
       id: 1,
       title: "The Art of Radiance, Mastered by Science.",
       subtitle: "Skin Win is a trusted destination for skin and hair excellence, offering state-of-the-art solutions to help you achieve your desired appearance and regain confidence.",
-      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop",
+      image: "/results/HeroCarousel/1/Microtia%20Website%20Banner.png",
       ctaPrimary: "Discover Our Treatments",
       ctaSecondary: "Book a Private Consultation"
     },
@@ -21,7 +21,7 @@ const HeroCarousel = () => {
       id: 2,
       title: "Transform Your Skin with Advanced Laser Technology",
       subtitle: "Experience the power of US-FDA approved laser treatments for flawless, radiant skin. From acne scars to pigmentation, we have the solution for you.",
-      image: "https://images.unsplash.com/photo-1556740714-a8395b3bf30f?q=80&w=2070&auto=format&fit=crop",
+      image: "/results/HeroCarousel/1/laser.png",
       ctaPrimary: "Explore Laser Treatments",
       ctaSecondary: "Book Consultation"
     },
@@ -29,7 +29,7 @@ const HeroCarousel = () => {
       id: 3,
       title: "Restore Your Hair, Regain Your Confidence",
       subtitle: "Advanced hair restoration treatments combining cutting-edge technology with expert care. From transplants to PRP therapy, transform your hair journey.",
-      image: "https://images.unsplash.com/photo-1596385212388-e2d8a6573589?q=80&w=1974&auto=format&fit=crop",
+      image: "/results/HeroCarousel/1/HT.png",
       ctaPrimary: "Hair Solutions",
       ctaSecondary: "Schedule Assessment"
     },
@@ -37,7 +37,7 @@ const HeroCarousel = () => {
       id: 4,
       title: "Personalized Skin Care for Lasting Beauty",
       subtitle: "Our expert dermatologists create bespoke treatment plans tailored to your unique skin concerns. Experience the difference of personalized care.",
-      image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070&auto=format&fit=crop",
+      image: "/results/HeroCarousel/1/PRP.png",
       ctaPrimary: "Custom Treatment Plans",
       ctaSecondary: "Consult Our Experts"
     },
@@ -45,7 +45,7 @@ const HeroCarousel = () => {
       id: 5,
       title: "State-of-the-Art Plastic Surgery Excellence",
       subtitle: "Transform your appearance with our advanced plastic surgery procedures, performed by board-certified surgeons in a safe, luxurious environment.",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=2069&auto=format&fit=crop",
+      image: "/results/HeroCarousel/1/Gynecomastia.png",
       ctaPrimary: "Plastic Surgery Services",
       ctaSecondary: "Book Consultation"
     }
@@ -109,9 +109,8 @@ const HeroCarousel = () => {
       {slides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
         >
           {/* Background Image */}
           <div
@@ -176,11 +175,10 @@ const HeroCarousel = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide
-                ? 'bg-[#C09A50] scale-125'
-                : 'bg-white bg-opacity-50 hover:bg-opacity-75'
-            }`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
+              ? 'bg-[#C09A50] scale-125'
+              : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
