@@ -55,7 +55,13 @@ const MegaMenu = () => {
                 { name: 'Melasma', path: '/treatments/skin-treatments/skin-concerns/melasma' },
                 { name: 'Mole', path: '/treatments/skin-treatments/skin-concerns/mole' },
                 { name: 'Warts', path: '/treatments/skin-treatments/skin-concerns/warts' },
-                { name: 'Psoriasis', path: '/treatments/skin-treatments/skin-concerns/psoriasis' }
+                { name: 'Psoriasis', path: '/treatments/skin-treatments/skin-concerns/psoriasis' },
+                { name: 'Eczema', path: '/treatments/skin-treatments/skin-concerns/eczema' },
+                { name: 'Urticaria', path: '/treatments/skin-treatments/skin-concerns/urticaria' },
+                { name: 'White Spots', path: '/treatments/skin-treatments/skin-concerns/white-spots' },
+                { name: 'Fungal Infection', path: '/treatments/skin-treatments/skin-concerns/fungal-infection' },
+                { name: 'Scabies', path: '/treatments/skin-treatments/skin-concerns/scabies' },
+                { name: 'Freckles', path: '/treatments/skin-treatments/skin-concerns/freckles' }
               ]
             },
             {

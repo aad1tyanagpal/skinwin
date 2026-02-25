@@ -57,6 +57,12 @@ const SkinTreatments = () => {
         { name: 'Mole Removal', path: '/treatments/skin-treatments/skin-concerns/mole' },
         { name: 'Warts Removal', path: '/treatments/skin-treatments/skin-concerns/warts' },
         { name: 'Psoriasis Treatment', path: '/treatments/skin-treatments/skin-concerns/psoriasis' },
+        { name: 'Eczema Treatment', path: '/treatments/skin-treatments/skin-concerns/eczema' },
+        { name: 'Urticaria Treatment', path: '/treatments/skin-treatments/skin-concerns/urticaria' },
+        { name: 'White Spots Treatment', path: '/treatments/skin-treatments/skin-concerns/white-spots' },
+        { name: 'Fungal Infection Treatment', path: '/treatments/skin-treatments/skin-concerns/fungal-infection' },
+        { name: 'Scabies Treatment', path: '/treatments/skin-treatments/skin-concerns/scabies' },
+        { name: 'Freckles Treatment', path: '/treatments/skin-treatments/skin-concerns/freckles' }
       ]
     }
   ];

@@ -17,6 +17,13 @@ import Pigmentation from '../pages/treatments/skin-treatments/skin-concerns/Pigm
 import Mole from '../pages/treatments/skin-treatments/skin-concerns/Mole';
 import Warts from '../pages/treatments/skin-treatments/skin-concerns/Warts';
 import Psoriasis from '../pages/treatments/skin-treatments/skin-concerns/Psoriasis';
+import Melasma from '../pages/treatments/skin-treatments/skin-concerns/Melasma';
+import Eczema from '../pages/treatments/skin-treatments/skin-concerns/Eczema';
+import Urticaria from '../pages/treatments/skin-treatments/skin-concerns/Urticaria';
+import WhiteSpots from '../pages/treatments/skin-treatments/skin-concerns/WhiteSpots';
+import FungalInfection from '../pages/treatments/skin-treatments/skin-concerns/FungalInfection';
+import Scabies from '../pages/treatments/skin-treatments/skin-concerns/Scabies';
+import Freckles from '../pages/treatments/skin-treatments/skin-concerns/Freckles';
 import GlutathioneTherapy from '../pages/treatments/skin-treatments/glow-skin-health/GlutathioneTherapy';
 import HairTreatments from '../pages/treatments/hair-treatments/HairTreatments';
 import HairTransplant from '../pages/treatments/hair-treatments/hair-loss/HairTransplant';
@@ -72,6 +79,13 @@ const AppRoutes = () => {
           <Route path="/treatments/skin-treatments/skin-concerns/mole" element={<Mole />} />
           <Route path="/treatments/skin-treatments/skin-concerns/warts" element={<Warts />} />
           <Route path="/treatments/skin-treatments/skin-concerns/psoriasis" element={<Psoriasis />} />
+          <Route path="/treatments/skin-treatments/skin-concerns/melasma" element={<Melasma />} />
+          <Route path="/treatments/skin-treatments/skin-concerns/eczema" element={<Eczema />} />
+          <Route path="/treatments/skin-treatments/skin-concerns/urticaria" element={<Urticaria />} />
+          <Route path="/treatments/skin-treatments/skin-concerns/white-spots" element={<WhiteSpots />} />
+          <Route path="/treatments/skin-treatments/skin-concerns/fungal-infection" element={<FungalInfection />} />
+          <Route path="/treatments/skin-treatments/skin-concerns/scabies" element={<Scabies />} />
+          <Route path="/treatments/skin-treatments/skin-concerns/freckles" element={<Freckles />} />
           <Route path="/treatments/skin-treatments/glow-skin-health/glutathione-therapy" element={<GlutathioneTherapy />} />
           <Route path="/treatments/hair-treatments" element={<HairTreatments />} />
           <Route path="/treatments/hair-treatments/hair-loss/hair-transplant" element={<HairTransplant />} />
