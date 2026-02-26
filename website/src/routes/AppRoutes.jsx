@@ -54,6 +54,19 @@ import Gynecomastia from '../pages/plastic-surgery/reconstructive/Gynecomastia';
 import ScarRevision from '../pages/plastic-surgery/reconstructive/ScarRevision';
 import PShot from '../pages/plastic-surgery/sexual-wellness/PShot';
 import OShot from '../pages/plastic-surgery/sexual-wellness/OShot';
+import FaceLift from '../pages/plastic-surgery/face-aesthetic/FaceLift';
+import DimpleCreation from '../pages/plastic-surgery/face-aesthetic/DimpleCreation';
+import FaceNeckLift from '../pages/plastic-surgery/face-aesthetic/FaceNeckLift';
+import LipAugmentation from '../pages/plastic-surgery/face-aesthetic/LipAugmentation';
+import ChinImplant from '../pages/plastic-surgery/face-aesthetic/ChinImplant';
+import CheekImplant from '../pages/plastic-surgery/face-aesthetic/CheekImplant';
+import MommyMakeover from '../pages/plastic-surgery/body-contouring/MommyMakeover';
+import ArmLift from '../pages/plastic-surgery/body-contouring/ArmLift';
+import ThighLift from '../pages/plastic-surgery/body-contouring/ThighLift';
+import BreastLump from '../pages/plastic-surgery/breast-surgery/BreastLump';
+import CystRemoval from '../pages/plastic-surgery/reconstructive/CystRemoval';
+import HandSurgery from '../pages/plastic-surgery/reconstructive/HandSurgery';
+import CleftPalate from '../pages/plastic-surgery/reconstructive/CleftPalate';
 import Concerns from '../pages/concerns/Concerns';
 import Results from '../pages/results/Results';
 import Locations from '../pages/locations/Locations';
@@ -116,6 +129,19 @@ const AppRoutes = () => {
           <Route path="/plastic-surgery/reconstructive/scar-revision" element={<ScarRevision />} />
           <Route path="/plastic-surgery/sexual-wellness/p-shot" element={<PShot />} />
           <Route path="/plastic-surgery/sexual-wellness/o-shot" element={<OShot />} />
+          <Route path="/plastic-surgery/face-aesthetic/face-lift" element={<FaceLift />} />
+          <Route path="/plastic-surgery/face-aesthetic/dimple-creation" element={<DimpleCreation />} />
+          <Route path="/plastic-surgery/face-aesthetic/face-neck-lift" element={<FaceNeckLift />} />
+          <Route path="/plastic-surgery/face-aesthetic/lip-augmentation" element={<LipAugmentation />} />
+          <Route path="/plastic-surgery/face-aesthetic/chin-implant" element={<ChinImplant />} />
+          <Route path="/plastic-surgery/face-aesthetic/cheek-implant" element={<CheekImplant />} />
+          <Route path="/plastic-surgery/body-contouring/mommy-makeover" element={<MommyMakeover />} />
+          <Route path="/plastic-surgery/body-contouring/arm-lift" element={<ArmLift />} />
+          <Route path="/plastic-surgery/body-contouring/thigh-lift" element={<ThighLift />} />
+          <Route path="/plastic-surgery/breast-surgery/breast-lump" element={<BreastLump />} />
+          <Route path="/plastic-surgery/reconstructive/cyst-removal" element={<CystRemoval />} />
+          <Route path="/plastic-surgery/reconstructive/hand-surgery" element={<HandSurgery />} />
+          <Route path="/plastic-surgery/reconstructive/cleft-palate" element={<CleftPalate />} />
           <Route path="/concerns" element={<Concerns />} />
           <Route path="/results" element={<Results />} />
           <Route path="/locations" element={<Locations />} />

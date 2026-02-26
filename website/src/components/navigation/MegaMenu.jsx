@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 
 const MegaMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [treatmentsDropdown, setTreatmentsDropdown] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const dropdownTimeoutRef = useRef(null);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (menuName) => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
     }
-    setTreatmentsDropdown(true);
+    setActiveDropdown(menuName);
   };
 
   const handleMouseLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
-      setTreatmentsDropdown(false);
+      setActiveDropdown(null);
     }, 150); // Small delay to allow mouse movement
   };
 
@@ -133,7 +133,97 @@ const MegaMenu = () => {
         }
       ]
     },
-    { name: 'Plastic Surgery', path: '/plastic-surgery' },
+    {
+      name: 'Plastic Surgery',
+      path: '/plastic-surgery',
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          name: 'Face Aesthetic',
+          path: '/plastic-surgery',
+          description: 'Facial enhancement procedures',
+          subItems: [
+            {
+              category: 'Facial Surgery',
+              items: [
+                { name: 'Rhinoplasty', path: '/plastic-surgery/face-aesthetic/rhinoplasty' },
+                { name: 'Face Lift', path: '/plastic-surgery/face-aesthetic/face-lift' },
+                { name: 'Dimple Creation', path: '/plastic-surgery/face-aesthetic/dimple-creation' },
+                { name: 'Eyelid Surgery', path: '/plastic-surgery/face-aesthetic/eyelid-surgery' },
+                { name: 'Face & Neck Lift', path: '/plastic-surgery/face-aesthetic/face-neck-lift' },
+                { name: 'Lip Augmentation', path: '/plastic-surgery/face-aesthetic/lip-augmentation' },
+                { name: 'Brow Lift', path: '/plastic-surgery/face-aesthetic/brow-lift' },
+                { name: 'Chin Implant', path: '/plastic-surgery/face-aesthetic/chin-implant' },
+                { name: 'Cheek Implant', path: '/plastic-surgery/face-aesthetic/cheek-implant' }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'Body Contouring',
+          path: '/plastic-surgery',
+          description: 'Body shaping and contouring',
+          subItems: [
+            {
+              category: 'Body Procedures',
+              items: [
+                { name: 'Liposuction', path: '/plastic-surgery/body-contouring/liposuction' },
+                { name: 'Tummy Tuck', path: '/plastic-surgery/body-contouring/tummy-tuck' },
+                { name: 'Mommy Makeover', path: '/plastic-surgery/body-contouring/mommy-makeover' },
+                { name: 'Arm Lift', path: '/plastic-surgery/body-contouring/arm-lift' },
+                { name: 'Thigh Lift', path: '/plastic-surgery/body-contouring/thigh-lift' }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'Breast Surgery',
+          path: '/plastic-surgery',
+          description: 'Breast procedures',
+          subItems: [
+            {
+              category: 'Breast Procedures',
+              items: [
+                { name: 'Breast Augmentation', path: '/plastic-surgery/breast-surgery/breast-augmentation' },
+                { name: 'Breast Reduction', path: '/plastic-surgery/breast-surgery/breast-reduction' },
+                { name: 'Breast Lump', path: '/plastic-surgery/breast-surgery/breast-lump' }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'Reconstructive',
+          path: '/plastic-surgery',
+          description: 'Corrective procedures',
+          subItems: [
+            {
+              category: 'Reconstructive Surgery',
+              items: [
+                { name: 'Gynecomastia', path: '/plastic-surgery/reconstructive/gynecomastia' },
+                { name: 'Cyst Removal', path: '/plastic-surgery/reconstructive/cyst-removal' },
+                { name: 'Hand Surgery', path: '/plastic-surgery/reconstructive/hand-surgery' },
+                { name: 'Scar Revision', path: '/plastic-surgery/reconstructive/scar-revision' },
+                { name: 'Cleft Palate', path: '/plastic-surgery/reconstructive/cleft-palate' }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'Sexual Wellness',
+          path: '/plastic-surgery',
+          description: 'Intimate wellness therapies',
+          subItems: [
+            {
+              category: 'Treatments',
+              items: [
+                { name: 'P-Shot®', path: '/plastic-surgery/sexual-wellness/p-shot' },
+                { name: 'O-Shot®', path: '/plastic-surgery/sexual-wellness/o-shot' }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     { name: 'Hair Transplant', path: '/treatments/hair-treatments/hair-loss/hair-transplant' },
     { name: 'Concerns', path: '/concerns' },
     { name: 'Results', path: '/results' },
@@ -144,7 +234,7 @@ const MegaMenu = () => {
     <div className="relative">
       {item.hasDropdown ? (
         <div
-          onMouseEnter={handleMouseEnter}
+          onMouseEnter={() => handleMouseEnter(item.name)}
           onMouseLeave={handleMouseLeave}
           className="relative"
         >
@@ -158,9 +248,9 @@ const MegaMenu = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </Link>
-          {treatmentsDropdown && (
+          {activeDropdown === item.name && (
             <div
-              onMouseEnter={handleMouseEnter}
+              onMouseEnter={() => handleMouseEnter(item.name)}
               onMouseLeave={handleMouseLeave}
               className="absolute top-full left-0 mt-2 w-screen max-w-6xl bg-white rounded-lg shadow-xl border border-gray-200 py-6 px-6 z-50"
             >
