@@ -12,43 +12,27 @@ const HeroCarousel = () => {
     {
       id: 1,
       title: "The Art of Radiance, Mastered by Science.",
-      subtitle: "Skin Win is a trusted destination for skin and hair excellence, offering state-of-the-art solutions to help you achieve your desired appearance and regain confidence.",
+      subtitle: "Advanced dermatology and skin treatments by expert doctors across Rajasthan.",
       image: "/results/HeroCarousel/1/Microtia%20Website%20Banner.png",
-      ctaPrimary: "Discover Our Treatments",
-      ctaSecondary: "Book a Private Consultation"
+      ctaPrimary: { text: "Explore Treatments", path: "/treatments" },
+      ctaSecondary: { text: "Book Consultation", path: "/contact" },
     },
     {
       id: 2,
-      title: "Transform Your Skin with Advanced Laser Technology",
-      subtitle: "Experience the power of US-FDA approved laser treatments for flawless, radiant skin. From acne scars to pigmentation, we have the solution for you.",
-      image: "/results/HeroCarousel/1/laser.png",
-      ctaPrimary: "Explore Laser Treatments",
-      ctaSecondary: "Book Consultation"
+      title: "Restore Your Hair. Regain Your Confidence.",
+      subtitle: "FUE & DHI hair transplant with natural results. Over 3,000 successful procedures.",
+      image: "/results/HeroCarousel/1/HT.png",
+      ctaPrimary: { text: "Hair Transplant", path: "/treatments/hair-treatments/hair-loss/hair-transplant" },
+      ctaSecondary: { text: "See Results", path: "/results" },
     },
     {
       id: 3,
-      title: "Restore Your Hair, Regain Your Confidence",
-      subtitle: "Advanced hair restoration treatments combining cutting-edge technology with expert care. From transplants to PRP therapy, transform your hair journey.",
-      image: "/results/HeroCarousel/1/HT.png",
-      ctaPrimary: "Hair Solutions",
-      ctaSecondary: "Schedule Assessment"
-    },
-    {
-      id: 4,
-      title: "Personalized Skin Care for Lasting Beauty",
-      subtitle: "Our expert dermatologists create bespoke treatment plans tailored to your unique skin concerns. Experience the difference of personalized care.",
-      image: "/results/HeroCarousel/1/PRP.png",
-      ctaPrimary: "Custom Treatment Plans",
-      ctaSecondary: "Consult Our Experts"
-    },
-    {
-      id: 5,
-      title: "State-of-the-Art Plastic Surgery Excellence",
-      subtitle: "Transform your appearance with our advanced plastic surgery procedures, performed by board-certified surgeons in a safe, luxurious environment.",
+      title: "Precision Plastic Surgery. Beyond Expectations.",
+      subtitle: "Board-certified surgeons. US-FDA approved technology. Absolute confidentiality.",
       image: "/results/HeroCarousel/1/Gynecomastia.png",
-      ctaPrimary: "Plastic Surgery Services",
-      ctaSecondary: "Book Consultation"
-    }
+      ctaPrimary: { text: "Plastic Surgery", path: "/plastic-surgery" },
+      ctaSecondary: { text: "Meet Our Doctors", path: "/about" },
+    },
   ];
 
   const nextSlide = useCallback(() => {
@@ -63,10 +47,9 @@ const HeroCarousel = () => {
     setCurrentSlide(index);
   };
 
-  // Auto-play functionality
   useEffect(() => {
     if (isAutoPlaying) {
-      intervalRef.current = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+      intervalRef.current = setInterval(nextSlide, 5000);
     }
     return () => {
       if (intervalRef.current) {
@@ -75,7 +58,6 @@ const HeroCarousel = () => {
     };
   }, [isAutoPlaying, nextSlide]);
 
-  // Touch handlers for mobile swipe
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -86,61 +68,58 @@ const HeroCarousel = () => {
 
   const handleTouchEnd = () => {
     const distance = touchStartX.current - touchEndX.current;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) {
-      nextSlide();
-    } else if (isRightSwipe) {
-      prevSlide();
-    }
+    if (distance > 50) nextSlide();
+    else if (distance < -50) prevSlide();
   };
 
   return (
     <div
-      className="relative h-screen overflow-hidden"
+      className="relative min-h-[calc(100vh-5rem)] overflow-hidden"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Slides */}
       {slides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
         >
-          {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${slide.image})` }}
           >
-            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20"></div>
           </div>
 
-          {/* Content */}
           <div className="relative z-10 flex items-center justify-center h-full">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 animate-fade-in-up">
+            {/* key forces remount on slide change, retriggering animations */}
+            <div
+              key={currentSlide}
+              className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white"
+            >
+              <div className="gold-divider mx-auto mb-8"></div>
+              <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-6 animate-fade-in-up leading-tight">
                 {slide.title}
               </h1>
-              <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl mb-10 animate-fade-in-up animation-delay-200">
+              <p className="mt-4 max-w-2xl mx-auto text-base md:text-lg lg:text-xl mb-10 animate-fade-in-up animation-delay-200 font-light leading-relaxed">
                 {slide.subtitle}
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up animation-delay-400">
                 <Link
-                  to="/treatments"
-                  className="bg-[#C09A50] text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:bg-[#B08A40] transition duration-300 transform hover:scale-105 text-center"
+                  to={slide.ctaPrimary.path}
+                  className="bg-gold text-white font-medium py-3 px-8 rounded-sm shadow-lg hover:bg-gold-hover transition duration-300 tracking-widest text-sm uppercase"
                 >
-                  {slide.ctaPrimary}
+                  {slide.ctaPrimary.text}
                 </Link>
                 <Link
-                  to="/contact"
-                  className="bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-gray-900 transition duration-300 text-center"
+                  to={slide.ctaSecondary.path}
+                  className="border border-white/60 text-white font-medium py-3 px-8 rounded-sm hover:bg-white hover:text-gray-900 transition duration-300 tracking-widest text-sm uppercase"
                 >
-                  {slide.ctaSecondary}
+                  {slide.ctaSecondary.text}
                 </Link>
               </div>
             </div>
@@ -151,48 +130,38 @@ const HeroCarousel = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black bg-opacity-50 hover:bg-opacity-75 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+        className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white p-3 rounded-full transition-all duration-300"
         aria-label="Previous slide"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black bg-opacity-50 hover:bg-opacity-75 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+        className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white p-3 rounded-full transition-all duration-300"
         aria-label="Next slide"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
-      {/* Dots Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
+      {/* Slide Indicators */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
-              ? 'bg-[#C09A50] scale-125'
-              : 'bg-white bg-opacity-50 hover:bg-opacity-75'
-              }`}
+            className={`h-1 rounded-full transition-all duration-500 ${
+              index === currentSlide
+                ? 'bg-gold w-10'
+                : 'bg-white/40 w-4 hover:bg-white/60'
+            }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-      </div>
-
-      {/* Progress Bar */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-black bg-opacity-20 z-20">
-        <div
-          className="h-full bg-[#C09A50] transition-all duration-300 ease-linear"
-          style={{
-            width: `${((currentSlide + 1) / slides.length) * 100}%`,
-            transition: isAutoPlaying ? 'width 5s linear' : 'none'
-          }}
-        ></div>
       </div>
     </div>
   );
