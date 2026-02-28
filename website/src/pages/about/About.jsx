@@ -1,50 +1,50 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Icons
-const UserGroupIcon = () => (
-  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V18h14v-1.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V18h6v-1.5c0-2.33-4.67-3.5-7-3.5z" />
+const ShieldCheckIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
   </svg>
 );
 
-const DnaIcon = () => (
-  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" />
+const ChipIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z" />
   </svg>
 );
 
-const StethoscopeIcon = () => (
-  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6zm4-2h-2V7h2v6zm0 4h-2v-2h2v2z" />
+const BeakerIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
   </svg>
 );
 
-const CheckCircleIcon = () => (
-  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+const TrophyIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.023 6.023 0 01-2.02 1.272 6.023 6.023 0 01-2.02-1.272" />
   </svg>
 );
 
-const SparklesIcon = () => (
-  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5L12 2z" />
+const LockIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
   </svg>
 );
 
-const AcademicCapIcon = () => (
-  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 8.69L6.23 8 12 5.31 17.77 8 12 11.69z" />
+const HeartIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
   </svg>
 );
 
-// Data
 const whyUsData = [
-  { title: "Expert-Led Practice", description: "All treatments are performed or supervised by our highly qualified team of expert dermatologists and plastic surgeons.", icon: <UserGroupIcon /> },
-  { title: "Advanced Technology", description: "We invest in state-of-the-art, US-FDA approved laser and diagnostic equipment for superior safety and results.", icon: <DnaIcon /> },
-  { title: "Bespoke Treatment Plans", description: "Your journey is unique. We conduct thorough diagnostics to create personalized treatment plans tailored to your specific goals.", icon: <StethoscopeIcon /> },
-  { title: "Proven Track Record", description: "With over 3,000 satisfied patients, our results speak for themselves. We are a trusted destination for skin and hair excellence.", icon: <CheckCircleIcon /> },
-  { title: "Absolute Confidentiality", description: "We uphold the strictest standards of privacy and discretion, ensuring a comfortable and secure experience for our clientele.", icon: <SparklesIcon /> },
-  { title: "Holistic Post-Care", description: "Our commitment extends beyond the treatment room, with comprehensive after-care guidance to ensure optimal, lasting outcomes.", icon: <CheckCircleIcon /> },
+  { title: "Expert-Led Practice", description: "All treatments are performed or supervised by our highly qualified team of expert dermatologists and plastic surgeons.", icon: <ShieldCheckIcon /> },
+  { title: "Advanced Technology", description: "We invest in state-of-the-art, US-FDA approved laser and diagnostic equipment for superior safety and results.", icon: <ChipIcon /> },
+  { title: "Bespoke Treatment Plans", description: "Your journey is unique. We conduct thorough diagnostics to create personalized treatment plans tailored to your specific goals.", icon: <BeakerIcon /> },
+  { title: "Proven Track Record", description: "With over 3,000 satisfied patients, our results speak for themselves. We are a trusted destination for skin and hair excellence.", icon: <TrophyIcon /> },
+  { title: "Absolute Confidentiality", description: "We uphold the strictest standards of privacy and discretion, ensuring a comfortable and secure experience for our clientele.", icon: <LockIcon /> },
+  { title: "Holistic Post-Care", description: "Our commitment extends beyond the treatment room, with comprehensive after-care guidance to ensure optimal, lasting outcomes.", icon: <HeartIcon /> },
 ];
 
 const doctorsData = [
@@ -52,112 +52,177 @@ const doctorsData = [
     name: "Dr. Rittika Walia",
     qualifications: "MBBS",
     location: "Jaipur (Nirman Nagar)",
-    image: "https://placehold.co/200x200/FBF5E9/333333?text=Dr.+Walia"
+    initials: "RW",
   },
   {
     name: "Dr. Parul Verma",
     qualifications: "MDS",
     location: "Jaipur (Vaishali Nagar)",
-    image: "https://placehold.co/200x200/FBF5E9/333333?text=Dr.+Verma"
+    initials: "PV",
   },
   {
     name: "Dr. Diwakar Sharma",
     qualifications: "MBBS, MD Dermatology",
     location: "Kota",
-    image: "https://placehold.co/200x200/FBF5E9/333333?text=Dr.+Sharma"
+    initials: "DS",
   },
   {
     name: "Dr. Raina Arora",
-    qualifications: "MBBS, MD, DNB-Skin & VD, Fellowship in Laser & Hair Transplant",
+    qualifications: "MBBS, MD, DNB - Skin & VD, Fellowship in Laser & Hair Transplant",
     location: "Ajmer",
-    image: "https://placehold.co/200x200/FBF5E9/333333?text=Dr.+Arora"
-  }
+    initials: "RA",
+  },
 ];
 
-const DoctorProfileCard = ({ doctor }) => (
-  <div className="text-center">
-    <img className="mx-auto h-40 w-40 rounded-full object-cover shadow-lg" src={doctor.image} alt={`Dr. ${doctor.name}`} />
-    <div className="mt-4">
-      <h3 className="text-lg font-bold text-gray-900">{doctor.name}</h3>
-      <p className="text-sm text-[#C09A50] font-semibold">{doctor.location}</p>
-      <div className="mt-2 flex items-center justify-center space-x-2 text-gray-500">
-        <AcademicCapIcon />
-        <p className="text-xs">{doctor.qualifications}</p>
-      </div>
-    </div>
-  </div>
-);
-
 const About = () => (
-  <div className="bg-white py-20 sm:py-24 pt-32">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="lg:text-center">
-        <h2 className="text-base text-[#C09A50] font-semibold tracking-wide uppercase">About Skin Win</h2>
-        <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          The Pinnacle of Dermatological Excellence
-        </p>
-        <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-          Skin Win was founded on the principle of providing world-class skin and hair care with an unwavering commitment to quality, privacy, and personalized attention. We cater to a discerning clientele that values expertise and expects perfection.
+  <div>
+    {/* Hero Banner */}
+    <section className="relative bg-gray-900 py-20 sm:py-28 -mt-20">
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-800"></div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
+        <div className="gold-divider mx-auto mb-6"></div>
+        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-6">
+          About Skin Win
+        </h1>
+        <p className="max-w-2xl mx-auto text-gray-300 text-lg leading-relaxed">
+          Founded on the principle of providing world-class skin and hair care with an unwavering commitment to quality, privacy, and personalized attention.
         </p>
       </div>
+    </section>
 
-      <div className="mt-12 lg:mt-16 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:items-center">
-        <div className="relative">
-          <img className="rounded-lg shadow-xl w-full" src="https://images.unsplash.com/photo-1580281657527-47f249e8f5df?q=80&w=1974&auto=format&fit=crop" alt="Skin Win Clinic Interior" />
-        </div>
-        <div className="mt-10 lg:mt-0">
-          <h3 className="text-2xl font-bold text-gray-900">Our Philosophy</h3>
-          <p className="mt-3 text-gray-600">
-            We believe that true beauty is a reflection of health and confidence. Our approach is not just to treat conditions, but to enhance your natural elegance through scientifically-backed procedures. Our team of renowned dermatologists and surgeons utilize cutting-edge technology to craft bespoke treatment journeys, ensuring results that are not only visible but also sustainable.
-          </p>
-          <h3 className="mt-8 text-2xl font-bold text-gray-900">Our Commitment to You</h3>
-          <p className="mt-3 text-gray-600">
-            Your trust is our most valued asset. From the moment you step into our serene and private clinic, your comfort and confidentiality are our highest priorities. We are dedicated to creating a sanctuary where you can achieve your aesthetic goals with peace of mind.
-          </p>
+    {/* Philosophy Section */}
+    <section className="bg-white py-20 sm:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="relative">
+            <div className="rounded-lg overflow-hidden shadow-xl">
+              <img
+                className="w-full h-[420px] lg:h-[500px] object-cover"
+                src="/results/HeroCarousel/1/PRP.png"
+                alt="Skin Win Clinic"
+              />
+            </div>
+            <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-[#C09A50]/20 rounded-lg -z-10 hidden lg:block"></div>
+          </div>
+          <div>
+            <div className="gold-divider mb-6"></div>
+            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-gray-900 mb-6">
+              Our Philosophy
+            </h2>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              We believe that true beauty is a reflection of health and confidence. Our approach is not just to treat conditions, but to enhance your natural elegance through scientifically-backed procedures.
+            </p>
+            <p className="text-gray-600 leading-relaxed mb-8">
+              Our team of renowned dermatologists and surgeons utilize cutting-edge technology to craft bespoke treatment journeys, ensuring results that are not only visible but also sustainable.
+            </p>
+
+            <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4">
+              Our Commitment to You
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              Your trust is our most valued asset. From the moment you step into our serene and private clinic, your comfort and confidentiality are our highest priorities. We are dedicated to creating a sanctuary where you can achieve your aesthetic goals with peace of mind.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
 
-      {/* Why Choose Skin Win Section */}
-      <div className="mt-20 sm:mt-24">
-        <div className="text-center">
-          <h2 className="text-base text-[#C09A50] font-semibold tracking-wide uppercase">Why Choose Skin Win</h2>
-          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+    {/* Stats Bar */}
+    <section className="bg-gray-900 py-12 sm:py-16">
+      <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {[
+          { number: "3,000+", label: "Satisfied Patients" },
+          { number: "4", label: "Clinic Locations" },
+          { number: "15+", label: "Expert Doctors" },
+          { number: "50+", label: "Treatments Offered" },
+        ].map((stat, i) => (
+          <div key={i}>
+            <p className="font-serif text-4xl md:text-5xl font-semibold text-[#C09A50]">{stat.number}</p>
+            <p className="mt-2 text-xs sm:text-sm text-gray-400 uppercase tracking-widest font-medium">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Why Choose Us */}
+    <section className="bg-[#FBF5E9] py-20 sm:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <div className="gold-divider mx-auto mb-6"></div>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900">
             The Unmistakable Mark of Quality
-          </p>
-          <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-            Our reputation is built on a foundation of trust, expertise, and an unwavering dedication to excellence that sets us apart.
+          </h2>
+          <p className="mt-4 max-w-2xl mx-auto text-gray-500 leading-relaxed">
+            Our reputation is built on a foundation of trust, expertise, and an unwavering dedication to excellence.
           </p>
         </div>
-        <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {whyUsData.map((feature, index) => (
-            <div key={index} className="bg-[#FBF5E9] p-6 rounded-lg shadow-sm">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-[#C09A50] text-white">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {whyUsData.map((feature) => (
+            <div key={feature.title} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="w-12 h-12 bg-[#C09A50]/10 rounded-lg flex items-center justify-center text-[#C09A50] mb-5">
                 {feature.icon}
               </div>
-              <h3 className="mt-5 text-lg font-medium text-gray-900">{feature.title}</h3>
-              <p className="mt-2 text-base text-gray-500">{feature.description}</p>
+              <h3 className="font-serif text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
       </div>
+    </section>
 
-      {/* Meet Our Experts Section */}
-      <div className="mt-20 sm:mt-24">
-        <div className="text-center">
-          <h2 className="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+    {/* Meet Our Experts */}
+    <section className="bg-white py-20 sm:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <div className="gold-divider mx-auto mb-6"></div>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900">
             Meet Our Experts
           </h2>
-          <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+          <p className="mt-4 max-w-2xl mx-auto text-gray-500 leading-relaxed">
             Our team of highly-credentialed doctors are leaders in their fields, dedicated to providing you with the highest standard of care.
           </p>
         </div>
-        <div className="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
           {doctorsData.map((doctor) => (
-            <DoctorProfileCard key={doctor.name} doctor={doctor} />
+            <div key={doctor.name} className="group text-center">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 rounded-full overflow-hidden ring-2 ring-[#C09A50]/20 group-hover:ring-[#C09A50] transition-all duration-300 bg-gray-900 flex items-center justify-center">
+                <span className="font-serif text-3xl sm:text-4xl font-semibold text-[#C09A50]">
+                  {doctor.initials}
+                </span>
+              </div>
+              <h3 className="font-serif text-lg sm:text-xl font-semibold text-gray-900">
+                {doctor.name}
+              </h3>
+              <p className="text-[#C09A50] text-sm font-medium mt-1">
+                {doctor.qualifications}
+              </p>
+              <p className="text-gray-500 text-sm mt-1">
+                {doctor.location}
+              </p>
+            </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
+
+    {/* CTA */}
+    <section className="bg-[#FBF5E9] py-16 sm:py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="gold-divider mx-auto mb-6"></div>
+        <h2 className="font-serif text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+          Begin Your Journey With Us
+        </h2>
+        <p className="text-gray-600 leading-relaxed mb-8">
+          Schedule a private consultation with one of our experts and discover the Skin Win difference.
+        </p>
+        <Link
+          to="/contact"
+          className="inline-flex items-center bg-[#C09A50] text-white font-medium py-3 px-8 rounded-sm shadow-lg hover:bg-[#B08A40] transition duration-300 tracking-widest text-sm uppercase"
+        >
+          Book Consultation
+        </Link>
+      </div>
+    </section>
   </div>
 );
 

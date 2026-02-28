@@ -120,7 +120,7 @@ const AfterCare = () => {
     : afterCareData.filter(item => item.category === selectedCategory);
 
   return (
-    <div className="bg-[#FBF5E9] py-16 pt-24">
+    <div className="bg-[#FBF5E9] py-16 pt-4">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Keeping your existing header intact */}
         <div className="text-center mb-12">

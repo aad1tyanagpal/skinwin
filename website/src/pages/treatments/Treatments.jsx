@@ -194,7 +194,7 @@ const WhyChooseUs = () => (
 
 const Treatments = () => {
   return (
-    <div className="bg-gradient-to-br from-[#FBF5E9] via-[#F8F0E3] to-[#FBF5E9] py-20 sm:py-24 pt-32">
+    <div className="bg-gradient-to-br from-[#FBF5E9] via-[#F8F0E3] to-[#FBF5E9] py-20 sm:py-24 pt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-20">
