@@ -1,6 +1,7 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
+
 
 // Page imports
 import Home from '../pages/home/Home';
@@ -72,11 +73,22 @@ import Concerns from '../pages/concerns/Concerns';
 import Results from '../pages/results/Results';
 import Locations from '../pages/locations/Locations';
 import Contact from '../pages/contact/Contact';
+import PrivacyPolicy from '../components/PrivacyPolicy';
+
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+  return null;
+};
 
 const AppRoutes = () => {
   return (
     <Router>
       <PageLayout>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
@@ -148,6 +160,7 @@ const AppRoutes = () => {
           <Route path="/results" element={<Results />} />
           <Route path="/locations" element={<Locations />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </PageLayout>
     </Router>

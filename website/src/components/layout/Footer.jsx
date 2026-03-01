@@ -39,11 +39,8 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <div className="flex items-start space-x-3 text-gray-800 mb-6">
-            <svg className="w-10 h-10 text-[#C09A50]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-1.026.977-2.19.977-3.434 0-3.517-1.009-6.799-2.753-9.571M12 21V11"></path>
-            </svg>
-            <span className="font-bold text-2xl tracking-wider">SKIN WIN</span>
+          <div className="mb-6">
+            <img src="/logo.png" alt="Skin Win Clinic" className="h-14 w-auto" />
           </div>
           <div>
             <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Follow Us</h3>

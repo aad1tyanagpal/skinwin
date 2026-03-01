@@ -1,191 +1,271 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// Icons
-const CheckCircleIcon = () => (
-  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-  </svg>
-);
-
-const ClockIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
-);
-
-// Enhanced Services Data
-const servicesData = {
-  skinCare: {
-    title: "Advanced Skin Care Treatments",
-    description: "Comprehensive skin rejuvenation and treatment solutions using cutting-edge technology and medical-grade procedures for radiant, healthy skin.",
-    imageUrl: "https://images.unsplash.com/photo-1556740714-a8395b3bf30f?q=80&w=2070&auto=format&fit=crop",
-    icon: "✨",
-    treatments: [
+const categories = [
+  {
+    id: 'skin',
+    title: 'Skin Treatments',
+    subtitle: 'Face Rejuvenation · Anti-Ageing · Skin Concerns · Glow & Health',
+    description: 'Medical-grade facials, peels, anti-ageing solutions, and targeted treatments for every skin concern — personalized for your skin type.',
+    path: '/treatments/skin-treatments',
+    color: 'from-rose-50 to-pink-50',
+    border: 'border-rose-100',
+    accent: 'text-rose-600',
+    badge: 'bg-rose-50 text-rose-700 border-rose-100',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+      </svg>
+    ),
+    groups: [
       {
-        category: "Facials & Rejuvenation",
-        services: [
-          { name: "Medi-Facials", info: "Photo Facial, Korean Glass Facial, Fire N Ice, Age-Revive, Pumpkin & E-Facial", timing: "Results in 24-48 hours" },
-          { name: "Vampire Facial (PRP)", info: "Regenerative treatment using your own platelets for collagen boost", timing: "Visible in 3-7 days, full results in 3-4 weeks" },
-          { name: "HydraFacial", info: "Deep cleansing and hydration treatment for instant glow", timing: "Immediate results" },
-          { name: "BB Glow Treatment", info: "Immediate brightness and even skin tone with deep hydration", timing: "Instant results" }
+        label: 'Face Rejuvenation',
+        items: [
+          { name: 'HydraFacial', path: '/treatments/skin-treatments/face-rejuvenation/hydra-facial' },
+          { name: 'Chemical Peel', path: '/treatments/skin-treatments/face-rejuvenation/chemical-peel' },
+          { name: 'Carbon Facial', path: '/treatments/skin-treatments/face-rejuvenation/carbon-facial' },
         ]
       },
       {
-        category: "Anti-Aging Solutions",
-        services: [
-          { name: "Botox", info: "Reduces wrinkles and fine lines effectively", timing: "Effects in 3-5 days, full results in 10-14 days" },
-          { name: "Dermal Fillers", info: "Restore volume and smooth wrinkles", timing: "Full results visible in 1-2 weeks" },
-          { name: "Thread Lift", info: "Non-surgical lifting and tightening", timing: "Results apparent in 2-4 weeks" },
-          { name: "HIFU Treatment", info: "High-intensity focused ultrasound for skin lifting", timing: "Gradual improvement over 2-3 months" }
+        label: 'Anti-Ageing',
+        items: [
+          { name: 'Botox', path: '/treatments/skin-treatments/anti-ageing/botox' },
+          { name: 'Fillers', path: '/treatments/skin-treatments/anti-ageing/fillers' },
+          { name: 'HIFU (Skin Tightening)', path: '/treatments/skin-treatments/anti-ageing/hifu' },
         ]
-      }
+      },
+      {
+        label: 'Skin Concerns',
+        items: [
+          { name: 'Acne & Pimples', path: '/treatments/skin-treatments/skin-concerns/acne' },
+          { name: 'Pigmentation & Melasma', path: '/treatments/skin-treatments/skin-concerns/pigmentation' },
+          { name: 'Mole', path: '/treatments/skin-treatments/skin-concerns/mole' },
+          { name: 'Warts', path: '/treatments/skin-treatments/skin-concerns/warts' },
+          { name: 'Psoriasis', path: '/treatments/skin-treatments/skin-concerns/psoriasis' },
+          { name: 'Eczema', path: '/treatments/skin-treatments/skin-concerns/eczema' },
+          { name: 'White Spots', path: '/treatments/skin-treatments/skin-concerns/white-spots' },
+          { name: 'Freckles', path: '/treatments/skin-treatments/skin-concerns/freckles' },
+          { name: 'Fungal Infection', path: '/treatments/skin-treatments/skin-concerns/fungal-infection' },
+        ]
+      },
+      {
+        label: 'Glow & Skin Health',
+        items: [
+          { name: 'Glutathione Therapy', path: '/treatments/skin-treatments/glow-skin-health/glutathione-therapy' },
+        ]
+      },
     ]
   },
-  laserTreatments: {
-    title: "Laser & Pigmentation Therapies",
-    description: "US-FDA approved laser technologies targeting pigmentation, unwanted hair, and skin imperfections with precision and proven results.",
-    imageUrl: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop",
-    icon: "🔬",
-    treatments: [
+  {
+    id: 'hair',
+    title: 'Hair Treatments',
+    subtitle: 'Hair Transplant · Therapies · Scalp Care',
+    description: 'FUE & DHI hair transplant, PRP, GFC, mesotherapy, and scalp care solutions — from surgical restoration to regenerative therapies.',
+    path: '/treatments/hair-treatments',
+    color: 'from-amber-50 to-yellow-50',
+    border: 'border-amber-100',
+    accent: 'text-amber-600',
+    badge: 'bg-amber-50 text-amber-700 border-amber-100',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+      </svg>
+    ),
+    groups: [
       {
-        category: "Q-Switch Laser Treatments",
-        services: [
-          { name: "Pigmentation Removal", info: "Treats freckles, melasma, age spots, sun spots & hyperpigmented scars", timing: "4-6 sessions for visible improvement" },
-          { name: "Laser Skin Brightening", info: "Instant glow facial using Q-Switch technology", timing: "Visible glow after first session" },
-          { name: "Birthmark & Nevus Removal", info: "Safe removal of natural birthmarks and mole-type spots", timing: "4-8 sessions typically needed" },
-          { name: "Area Brightening", info: "Underarm, neck, elbow brightening treatments", timing: "Visible changes after 4-6 sessions" }
+        label: 'Hair Loss Solutions',
+        items: [
+          { name: 'Hair Transplant (FUE/DHI)', path: '/treatments/hair-treatments/hair-loss/hair-transplant' },
+          { name: 'Beard Transplant', path: '/treatments/hair-treatments/hair-loss/beard-transplant' },
+          { name: 'Eyebrow Transplant', path: '/treatments/hair-treatments/hair-loss/eyebrow-transplant' },
         ]
       },
       {
-        category: "Laser Hair Reduction",
-        services: [
-          { name: "Face Areas", info: "Upper lip, chin, jawline, side locks, full face treatment", timing: "6-8 sessions for optimal results" },
-          { name: "Body Areas", info: "Arms, legs, underarms, bikini, chest, back, stomach", timing: "80-90% reduction typically achieved" },
-          { name: "Men's Services", info: "Beard shaping and body hair reduction", timing: "Customized session count" },
-          { name: "Triple Wavelength Tech", info: "Advanced US-FDA approved system for all skin types", timing: "Safe and effective for Indian skin" }
+        label: 'Hair Strength & Growth',
+        items: [
+          { name: 'PRP Therapy', path: '/treatments/hair-treatments/therapies/prp' },
+          { name: 'GFC PRP Therapy', path: '/treatments/hair-treatments/therapies/gfc-prp' },
+          { name: 'Mesotherapy', path: '/treatments/hair-treatments/therapies/mesotherapy' },
+          { name: 'LLLT (Low Level Laser)', path: '/treatments/hair-treatments/therapies/lllt' },
+          { name: 'Medical Therapy', path: '/treatments/hair-treatments/therapies/medical-therapy' },
         ]
-      }
+      },
+      {
+        label: 'Scalp Care',
+        items: [
+          { name: 'Dandruff Treatment', path: '/treatments/hair-treatments/scalp-care/dandruff' },
+        ]
+      },
     ]
   },
-  hairRestoration: {
-    title: "Hair Restoration & Regrowth",
-    description: "Comprehensive hair loss solutions combining surgical excellence with regenerative therapies to restore natural hair growth and confidence.",
-    imageUrl: "https://images.unsplash.com/photo-1596385212388-e2d8a6573589?q=80&w=1974&auto=format&fit=crop",
-    icon: "💇‍♂️",
-    treatments: [
+  {
+    id: 'laser',
+    title: 'Laser Treatments',
+    subtitle: 'Hair Removal · Skin Concerns · Advanced Laser',
+    description: 'US-FDA approved laser technology for permanent hair reduction, pigmentation, scars, tattoo removal and skin tightening.',
+    path: '/treatments/laser-treatments',
+    color: 'from-blue-50 to-sky-50',
+    border: 'border-blue-100',
+    accent: 'text-blue-600',
+    badge: 'bg-blue-50 text-blue-700 border-blue-100',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
+    groups: [
       {
-        category: "Surgical Hair Restoration",
-        services: [
-          { name: "FUE Hair Transplant", info: "Minimally invasive extraction with no linear scars", timing: "Natural growth in 6-12 months" },
-          { name: "DHI Technique", info: "Advanced implanter pen for precision and higher density", timing: "Growth starts in 3-4 months" },
-          { name: "Facial Hair Transplant", info: "Beard, moustache, and eyebrow restoration", timing: "Full results in 8-12 months" },
-          { name: "Scalp Micropigmentation", info: "Creates appearance of denser hair follicles", timing: "2-3 sessions for completion" }
+        label: 'Hair Removal',
+        items: [
+          { name: 'Laser Hair Reduction', path: '/treatments/laser-treatments/hair-removal/laser-hair-reduction' },
         ]
       },
       {
-        category: "Regenerative Hair Therapies",
-        services: [
-          { name: "PRP & GFC Therapy", info: "Platelet-rich plasma and growth factor treatments", timing: "Visible improvement in 2-3 months" },
-          { name: "Hair Mesotherapy", info: "Direct scalp injections of vitamins and nutrients", timing: "Results over 4-6 sessions" },
-          { name: "LLLT (Low-Level Laser)", info: "US-FDA approved cold laser therapy", timing: "Improvement visible after 3-4 months" },
-          { name: "Alopecia Areata Treatment", info: "Steroid injections and PRP for patchy hair loss", timing: "Regrowth typically in 2-4 months" }
+        label: 'Skin Concerns',
+        items: [
+          { name: 'Laser Acne Treatment', path: '/treatments/laser-treatments/skin-concerns/laser-acne' },
+          { name: 'Laser Scar Revision', path: '/treatments/laser-treatments/skin-concerns/laser-scar' },
+          { name: 'Laser Birthmark Removal', path: '/treatments/laser-treatments/skin-concerns/laser-birthmark' },
         ]
-      }
+      },
+      {
+        label: 'Advanced Laser',
+        items: [
+          { name: 'Laser Tattoo Removal', path: '/treatments/laser-treatments/advanced-laser/tattoo-removal' },
+          { name: 'Laser Skin Tightening', path: '/treatments/laser-treatments/advanced-laser/skin-tightening' },
+        ]
+      },
     ]
   },
-  specialtyTreatments: {
-    title: "Specialty Procedures & Aesthetics",
-    description: "Specialized treatments for unique skin concerns, aesthetic enhancements, and semi-permanent makeup solutions with professional precision.",
-    imageUrl: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=2031&auto=format&fit=crop",
-    icon: "🎯",
-    treatments: [
+  {
+    id: 'plastic',
+    title: 'Plastic Surgery',
+    subtitle: 'Face · Body · Breast · Reconstructive',
+    description: 'Board-certified surgeons performing surgical and non-surgical aesthetic procedures — from rhinoplasty to body contouring.',
+    path: '/plastic-surgery',
+    color: 'from-purple-50 to-violet-50',
+    border: 'border-purple-100',
+    accent: 'text-purple-600',
+    badge: 'bg-purple-50 text-purple-700 border-purple-100',
+    availableAt: 'Vaishali Nagar & Ajmer only',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+    groups: [
       {
-        category: "Skin Concern Treatments",
-        services: [
-          { name: "Chemical Peels", info: "Lactic, Glycolic, Kojic, Salicylic, Mandelic & TCA peels", timing: "Improvement visible after each session" },
-          { name: "Mole & Wart Removal", info: "Safe removal including plantar warts", timing: "Single session, healing in 1-2 weeks" },
-          { name: "Keloid & Scar Treatment", info: "Advanced scar revision and keloid management", timing: "Gradual improvement over months" },
-          { name: "Specialized Removal", info: "Skin tags, milia, molluscum, xanthelasma treatment", timing: "Typically single session" }
+        label: 'Face Aesthetic',
+        items: [
+          { name: 'Rhinoplasty', path: '/plastic-surgery/face-aesthetic/rhinoplasty' },
+          { name: 'Eyelid Surgery', path: '/plastic-surgery/face-aesthetic/eyelid-surgery' },
+          { name: 'Face & Neck Lift', path: '/plastic-surgery/face-aesthetic/face-neck-lift' },
+          { name: 'Brow Lift', path: '/plastic-surgery/face-aesthetic/brow-lift' },
+          { name: 'Chin Implant', path: '/plastic-surgery/face-aesthetic/chin-implant' },
+          { name: 'Lip Augmentation', path: '/plastic-surgery/face-aesthetic/lip-augmentation' },
+          { name: 'Dimple Creation', path: '/plastic-surgery/face-aesthetic/dimple-creation' },
         ]
       },
       {
-        category: "Aesthetic Enhancements",
-        services: [
-          { name: "RF Treatments", info: "Radiofrequency for face, neck & tummy tightening", timing: "Results build over 2-3 months" },
-          { name: "Full Body Polishing", info: "Comprehensive skin polishing for hands, legs, back", timing: "Immediate glow and smoothness" },
-          { name: "Ear Lobe Repair", info: "Surgical repair of torn or stretched earlobes", timing: "Healing complete in 4-6 weeks" },
-          { name: "Comedone Extraction", info: "Professional removal of blackheads and whiteheads", timing: "Immediate improvement" }
+        label: 'Body Contouring',
+        items: [
+          { name: 'Liposuction', path: '/plastic-surgery/body-contouring/liposuction' },
+          { name: 'Tummy Tuck', path: '/plastic-surgery/body-contouring/tummy-tuck' },
+          { name: 'Arm Lift', path: '/plastic-surgery/body-contouring/arm-lift' },
+          { name: 'Thigh Lift', path: '/plastic-surgery/body-contouring/thigh-lift' },
+          { name: 'Mommy Makeover', path: '/plastic-surgery/body-contouring/mommy-makeover' },
         ]
-      }
+      },
+      {
+        label: 'Breast Surgery',
+        items: [
+          { name: 'Breast Augmentation', path: '/plastic-surgery/breast-surgery/breast-augmentation' },
+          { name: 'Breast Reduction', path: '/plastic-surgery/breast-surgery/breast-reduction' },
+          { name: 'Breast Lump', path: '/plastic-surgery/breast-surgery/breast-lump' },
+        ]
+      },
+      {
+        label: 'Reconstructive',
+        items: [
+          { name: 'Gynecomastia', path: '/plastic-surgery/reconstructive/gynecomastia' },
+          { name: 'Scar Revision', path: '/plastic-surgery/reconstructive/scar-revision' },
+          { name: 'Cyst Removal', path: '/plastic-surgery/reconstructive/cyst-removal' },
+        ]
+      },
     ]
-  }
-};
+  },
+];
 
-const TreatmentCard = ({ treatment }) => (
-  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 hover:shadow-lg transition-all duration-300">
-    <h4 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-100 pb-2">
-      {treatment.category}
-    </h4>
-    <div className="space-y-4">
-      {treatment.services.map((service, index) => (
-        <div key={index} className="group">
-          <div className="flex items-start space-x-3">
-            <div className="flex-shrink-0 h-5 w-5 text-[#C09A50] mt-0.5">
-              <CheckCircleIcon />
-            </div>
-            <div className="flex-1">
-              <h5 className="font-medium text-gray-800 group-hover:text-[#C09A50] transition-colors">
-                {service.name}
-              </h5>
-              <p className="text-sm text-gray-600 mt-1">{service.info}</p>
-              {service.timing && (
-                <div className="flex items-center mt-2 text-xs text-[#C09A50]">
-                  <ClockIcon />
-                  <span className="ml-1">{service.timing}</span>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      ))}
+const CategoryCard = ({ cat, isActive, onClick }) => (
+  <button
+    onClick={() => onClick(cat.id)}
+    className={`w-full text-left rounded-2xl border p-6 transition-all duration-300 ${
+      isActive
+        ? `bg-gradient-to-br ${cat.color} ${cat.border} shadow-lg scale-[1.02]`
+        : 'bg-white border-gray-100 hover:border-gray-200 hover:shadow-md'
+    }`}
+  >
+    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+      isActive ? `bg-white/70 ${cat.accent}` : 'bg-gray-50 text-gray-400'
+    }`}>
+      {cat.icon}
     </div>
-  </div>
+    <h3 className={`font-serif text-lg font-semibold mb-1 ${isActive ? 'text-gray-900' : 'text-gray-700'}`}>
+      {cat.title}
+    </h3>
+    <p className={`text-xs leading-relaxed ${isActive ? 'text-gray-500' : 'text-gray-400'}`}>
+      {cat.subtitle}
+    </p>
+    {cat.availableAt && isActive && (
+      <span className={`inline-block mt-3 text-xs px-2.5 py-1 rounded-full border font-medium ${cat.badge}`}>
+        📍 {cat.availableAt}
+      </span>
+    )}
+  </button>
 );
 
-const ServiceSection = ({ service }) => (
-  <div className="mb-16 last:mb-0">
-    <div className="text-center mb-8">
-      <div className="flex items-center justify-center mb-4">
-        <span className="text-3xl mr-3">{service.icon}</span>
-        <h3 className="text-3xl font-bold text-gray-900">{service.title}</h3>
+const TreatmentPanel = ({ cat }) => (
+  <div className={`bg-gradient-to-br ${cat.color} rounded-2xl border ${cat.border} p-8 sm:p-10`}>
+    {/* Header */}
+    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
+      <div>
+        <p className={`text-xs font-semibold uppercase tracking-widest mb-2 ${cat.accent}`}>
+          Skin Win Clinic
+        </p>
+        <h2 className="font-serif text-3xl font-semibold text-gray-900">{cat.title}</h2>
+        <p className="text-gray-500 mt-2 max-w-xl leading-relaxed">{cat.description}</p>
       </div>
-      <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">{service.description}</p>
+      <Link
+        to={cat.path}
+        className="flex-shrink-0 inline-flex items-center gap-2 bg-[#C09A50] hover:bg-[#B08A40] text-white font-semibold text-sm px-6 py-3 rounded-xl shadow transition-colors duration-200"
+      >
+        View All
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </Link>
     </div>
-    <div className="grid md:grid-cols-2 gap-6">
-      {service.treatments.map((treatment, index) => (
-        <TreatmentCard key={index} treatment={treatment} />
-      ))}
-    </div>
-  </div>
-);
 
-const WhyChooseUs = () => (
-  <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200/50 mt-20">
-    <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Why Choose Skin Win Clinic?</h3>
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        { icon: "👨‍⚕️", title: "Expert Specialists", desc: "Qualified dermatologists & plastic surgeons" },
-        { icon: "🏆", title: "US-FDA Approved Tech", desc: "State-of-the-art equipment ensuring safety" },
-        { icon: "📋", title: "Personalized Plans", desc: "Customized treatments based on thorough analysis" },
-        { icon: "😊", title: "Proven Track Record", desc: "3000+ happy patients, 1000+ successful transplants" },
-        { icon: "💰", title: "Affordable Care", desc: "Competitive pricing with EMI options available" },
-        { icon: "🏥", title: "Premium Environment", desc: "Clean, hygienic, and welcoming clinic ambiance" }
-      ].map((feature, index) => (
-        <div key={index} className="text-center p-4">
-          <div className="text-3xl mb-3">{feature.icon}</div>
-          <h4 className="font-semibold text-gray-800 mb-2">{feature.title}</h4>
-          <p className="text-sm text-gray-600">{feature.desc}</p>
+    {/* Treatment Groups */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {cat.groups.map((group, i) => (
+        <div key={i}>
+          <h4 className={`text-xs font-semibold uppercase tracking-wider mb-3 ${cat.accent}`}>
+            {group.label}
+          </h4>
+          <ul className="space-y-1.5">
+            {group.items.map((item, j) => (
+              <li key={j}>
+                <Link
+                  to={item.path}
+                  className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#C09A50] group transition-colors duration-200 py-1"
+                >
+                  <span className="h-1 w-1 bg-gray-300 group-hover:bg-[#C09A50] rounded-full flex-shrink-0 transition-colors"></span>
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>
@@ -193,47 +273,65 @@ const WhyChooseUs = () => (
 );
 
 const Treatments = () => {
+  const [activeId, setActiveId] = useState('skin');
+  const activeCat = categories.find(c => c.id === activeId);
+
   return (
-    <div className="bg-gradient-to-br from-[#FBF5E9] via-[#F8F0E3] to-[#FBF5E9] py-20 sm:py-24 pt-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <div className="text-center mb-20">
-          <h2 className="text-base text-[#C09A50] font-semibold tracking-wide uppercase mb-2">
-            Our Comprehensive Services
-          </h2>
-          <p className="text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 mb-6">
-            Expert Care for Skin & Hair
+    <div className="bg-white min-h-screen">
+
+      {/* Hero */}
+      <div className="bg-[#FBF5E9] py-20 sm:py-28">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="gold-divider mx-auto mb-6"></div>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold text-gray-900 mb-5">
+            Our Treatments
+          </h1>
+          <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            Advanced, doctor-supervised aesthetic care across four specialities — personalized for your concern, skin type, and goals.
           </p>
-          <p className="max-w-3xl text-xl text-gray-600 mx-auto leading-relaxed">
-            From advanced laser therapies to surgical hair restoration, we offer a complete range of dermatological 
-            and aesthetic treatments designed to help you look and feel your best.
-          </p>
-        </div>
-
-        {/* Services Sections */}
-        <div className="space-y-24">
-          <ServiceSection service={servicesData.skinCare} />
-          <ServiceSection service={servicesData.laserTreatments} />
-          <ServiceSection service={servicesData.hairRestoration} />
-          <ServiceSection service={servicesData.specialtyTreatments} />
-        </div>
-
-        {/* Why Choose Us Section */}
-        <WhyChooseUs />
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-[#C09A50] to-[#B8903D] rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Skin & Hair?</h3>
-            <p className="text-lg mb-6 opacity-90">
-              Book your free consultation today and discover the perfect treatment plan for your needs.
-            </p>
-            <Link to="/contact" className="bg-white text-[#C09A50] px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-              Schedule Free Consultation
-            </Link>
-          </div>
         </div>
       </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+
+        {/* Category Tabs */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          {categories.map(cat => (
+            <CategoryCard
+              key={cat.id}
+              cat={cat}
+              isActive={activeId === cat.id}
+              onClick={setActiveId}
+            />
+          ))}
+        </div>
+
+        {/* Active Treatment Panel */}
+        {activeCat && <TreatmentPanel cat={activeCat} />}
+
+      </div>
+
+      {/* Bottom CTA */}
+      <div className="bg-gray-900 py-16">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-white mb-4">
+            Not Sure Which Treatment Is Right?
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Our doctors will assess your concern and recommend the most suitable treatment plan — honestly and transparently.
+          </p>
+          <a
+            href="https://wa.me/919773311102?text=Hello%21+I%27d+like+to+book+a+consultation+at+Skin+Win+Clinic."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-[#C09A50] hover:bg-[#B08A40] text-white font-bold py-3 px-10 rounded-xl shadow-md transition duration-300"
+          >
+            Book Free Consultation
+          </a>
+        </div>
+      </div>
+
     </div>
   );
 };

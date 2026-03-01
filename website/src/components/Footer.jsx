@@ -26,12 +26,12 @@ const Footer = ({ setActivePage }) => (
             {/* <li><button onClick={() => setActivePage('after-care')} className="text-base text-gray-600 hover:text-gray-900">After Care</button></li> */}
             <li><button onClick={() => setActivePage('contact')} className="text-base text-gray-600 hover:text-gray-900">Contact</button></li>
             <li>
-              <button 
-                onClick={() => setActivePage('privacy-policy')} 
+              <Link 
+                to="/privacy-policy" 
                 className="text-base text-gray-600 hover:text-gray-900"
               >
                 Privacy Policy
-              </button>
+              </Link>
             </li>
           </ul>
         </div>

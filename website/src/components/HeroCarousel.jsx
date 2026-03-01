@@ -102,22 +102,22 @@ const HeroCarousel = () => {
               className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white"
             >
               <div className="gold-divider mx-auto mb-8"></div>
-              <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-6 animate-fade-in-up leading-tight">
+              <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-5 animate-fade-in-up leading-tight drop-shadow-lg">
                 {slide.title}
               </h1>
-              <p className="mt-4 max-w-2xl mx-auto text-base md:text-lg lg:text-xl mb-10 animate-fade-in-up animation-delay-200 font-light leading-relaxed">
+              <p className="max-w-xl mx-auto text-sm md:text-base text-white/80 mb-10 animate-fade-in-up animation-delay-200 font-light leading-relaxed tracking-wide">
                 {slide.subtitle}
               </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up animation-delay-400">
+              <div className="flex flex-row justify-center items-center gap-3 animate-fade-in-up animation-delay-400">
                 <Link
                   to={slide.ctaPrimary.path}
-                  className="bg-gold text-white font-medium py-3 px-8 rounded-sm shadow-lg hover:bg-gold-hover transition duration-300 tracking-widest text-sm uppercase"
+                  className="bg-[#C09A50] hover:bg-[#B08A40] text-white font-semibold py-3 px-7 rounded-lg shadow-lg transition duration-300 text-sm tracking-wide"
                 >
                   {slide.ctaPrimary.text}
                 </Link>
                 <Link
                   to={slide.ctaSecondary.path}
-                  className="border border-white/60 text-white font-medium py-3 px-8 rounded-sm hover:bg-white hover:text-gray-900 transition duration-300 tracking-widest text-sm uppercase"
+                  className="bg-white/15 backdrop-blur-sm border border-white/30 hover:bg-white/25 text-white font-semibold py-3 px-7 rounded-lg transition duration-300 text-sm tracking-wide"
                 >
                   {slide.ctaSecondary.text}
                 </Link>
