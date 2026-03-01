@@ -89,7 +89,7 @@ const ContactButton = ({ icon, title, href }) => (
 );
 
 const DirectContactCard = () => {
-    const primaryPhoneNumber = "919256444577";
+    const primaryPhoneNumber = "919773311102";
     const primaryEmail = "info@skinwin.com";
     const whatsappMessage = "Hello! I'm interested in your services and would like to know more.";
 

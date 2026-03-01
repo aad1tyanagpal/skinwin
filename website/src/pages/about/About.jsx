@@ -49,28 +49,58 @@ const whyUsData = [
 
 const doctorsData = [
   {
-    name: "Dr. Rittika Walia",
-    qualifications: "MBBS",
-    location: "Jaipur (Nirman Nagar)",
-    initials: "RW",
+    name: "Dr. Vijay Gakhar",
+    qualifications: "— (To be updated)",
+    initials: "VG",
+    role: "Senior Consultant",
+    about: "Dr. Vijay Gakhar is a founding member of Skin Win Clinic and plays a key role in shaping the clinical direction of the practice. His expertise spans advanced aesthetic and dermatological procedures, ensuring every patient receives personalised, result-oriented care.",
+    expertise: ["Hair Transplant", "Laser Treatments", "Aesthetic Procedures", "Patient Consultation"],
+    photo: null,
   },
   {
-    name: "Dr. Parul Verma",
-    qualifications: "MDS",
-    location: "Jaipur (Vaishali Nagar)",
-    initials: "PV",
-  },
-  {
-    name: "Dr. Diwakar Sharma",
-    qualifications: "MBBS, MD Dermatology",
-    location: "Kota",
-    initials: "DS",
+    name: "Dr. Vibhuti Gakhar",
+    qualifications: "— (To be updated)",
+    initials: "VBG",
+    role: "Consultant Dermatologist",
+    about: "Dr. Vibhuti Gakhar brings a meticulous and patient-first approach to every consultation. As a co-founder of Skin Win, she has been instrumental in building a clinic culture rooted in transparency, ethical practice, and long-term skin health.",
+    expertise: ["Skin Care & Treatments", "Cosmetology", "Pigmentation & Acne", "Medi-Facials"],
+    photo: null,
   },
   {
     name: "Dr. Raina Arora",
-    qualifications: "MBBS, MD, DNB - Skin & VD, Fellowship in Laser & Hair Transplant",
-    location: "Ajmer",
+    qualifications: "MBBS · MD (Skin & VD) · DNB (Skin & VD) · Fellowship in Laser & Hair Transplant",
     initials: "RA",
+    role: "Dermatologist & Hair Transplant Surgeon",
+    about: "Dr. Raina Arora holds a rare dual postgraduate qualification — MD and DNB in Skin & VD — along with a dedicated Fellowship in Laser procedures and Hair Transplant Surgery. Her advanced training makes her one of the most qualified specialists on our team for hair restoration and laser treatments.",
+    expertise: ["Hair Transplant (FUE/DHI)", "Laser Hair Reduction", "PRP Therapy", "Skin & VD"],
+    photo: null,
+  },
+  {
+    name: "Dr. Diwakar Sharma",
+    qualifications: "MBBS · MD – Dermatology",
+    initials: "DS",
+    role: "Consultant Dermatologist",
+    about: "Dr. Diwakar Sharma is an experienced dermatologist with strong grounding in both clinical and cosmetic dermatology. He is known for accurate diagnosis, effective treatment planning, and a calm, reassuring approach that puts patients at ease.",
+    expertise: ["Clinical Dermatology", "Hair Loss Management", "Skin Disorders", "Laser Treatments"],
+    photo: null,
+  },
+  {
+    name: "Dr. Deeksha Sharma",
+    qualifications: "BDS · SMS · Cosmetologist",
+    initials: "DKS",
+    role: "Aesthetic Cosmetologist",
+    about: "Dr. Deeksha Sharma combines her training from SMS with specialized cosmetology expertise to deliver refined facial aesthetic treatments. Her understanding of facial structure and skin physiology makes her highly effective in non-surgical aesthetic procedures.",
+    expertise: ["Botox & Fillers", "Anti-Aging Treatments", "Medi-Facials", "Skin Brightening"],
+    photo: null,
+  },
+  {
+    name: "Dr. Sonali Gupta",
+    qualifications: "MBBS – Gold Medalist, SMS Jaipur · MD (Skin & VD) – SMS Jaipur",
+    initials: "SG",
+    role: "Senior Dermatologist & Venereologist",
+    about: "Dr. Sonali Gupta is a Gold Medalist from the prestigious Sawai Man Singh Medical College, Jaipur, with postgraduate specialization in Skin & VD from the same institution. Prior to joining Skin Win, she served as a Consultant at SVP Hospital and Shardaben Hospital, Ahmedabad — bringing institutional-level clinical depth to our practice.",
+    expertise: ["Acne & Pigmentation", "Cosmetic Dermatology", "Laser Procedures", "Hair & Scalp Treatments"],
+    photo: null,
   },
 ];
 
@@ -144,6 +174,85 @@ const About = () => (
       </div>
     </section>
 
+{/* Meet Our Experts */}
+    <section className="bg-white py-20 sm:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <div className="gold-divider mx-auto mb-6"></div>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900">
+            Meet Our Team
+          </h2>
+          <p className="mt-4 max-w-2xl mx-auto text-gray-500 leading-relaxed">
+            A team of qualified, experienced, and dedicated doctors — committed to delivering safe, ethical, and personalised care.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {doctorsData.map((doctor) => (
+            <div key={doctor.name} className="group bg-[#FBF5E9] rounded-2xl overflow-hidden border border-[#C09A50]/10 hover:border-[#C09A50]/40 hover:shadow-xl transition-all duration-300">
+              
+              {/* Photo Area */}
+              <div className="relative h-56 bg-gray-900 overflow-hidden">
+                {doctor.photo ? (
+                  <img
+                    src={doctor.photo}
+                    alt={doctor.name}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center">
+                      <span className="font-serif text-6xl font-semibold text-[#C09A50]">
+                        {doctor.initials}
+                      </span>
+                      <p className="text-gray-500 text-xs mt-2 tracking-widest uppercase">Photo coming soon</p>
+                    </div>
+                  </div>
+                )}
+                {/* Gold bottom border accent */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#C09A50] to-transparent"></div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                
+                {/* Name & Role */}
+                <h3 className="font-serif text-xl font-semibold text-gray-900 leading-tight">
+                  {doctor.name}
+                </h3>
+                <p className="text-[#C09A50] text-sm font-medium mt-1">{doctor.role}</p>
+
+                {/* Qualifications */}
+                <p className="text-gray-400 text-xs mt-2 leading-relaxed border-t border-[#C09A50]/10 pt-3">
+                  {doctor.qualifications}
+                </p>
+
+                {/* About */}
+                <p className="text-gray-600 text-sm leading-relaxed mt-3">
+                  {doctor.about}
+                </p>
+
+                {/* Expertise Tags */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {doctor.expertise.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs bg-white text-gray-600 border border-[#C09A50]/20 rounded-full px-3 py-1"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+
+
+
+      </div>
+    </section>
+
     {/* Why Choose Us */}
     <section className="bg-[#FBF5E9] py-20 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -170,40 +279,7 @@ const About = () => (
       </div>
     </section>
 
-    {/* Meet Our Experts */}
-    <section className="bg-white py-20 sm:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="gold-divider mx-auto mb-6"></div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900">
-            Meet Our Experts
-          </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-gray-500 leading-relaxed">
-            Our team of highly-credentialed doctors are leaders in their fields, dedicated to providing you with the highest standard of care.
-          </p>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-          {doctorsData.map((doctor) => (
-            <div key={doctor.name} className="group text-center">
-              <div className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 rounded-full overflow-hidden ring-2 ring-[#C09A50]/20 group-hover:ring-[#C09A50] transition-all duration-300 bg-gray-900 flex items-center justify-center">
-                <span className="font-serif text-3xl sm:text-4xl font-semibold text-[#C09A50]">
-                  {doctor.initials}
-                </span>
-              </div>
-              <h3 className="font-serif text-lg sm:text-xl font-semibold text-gray-900">
-                {doctor.name}
-              </h3>
-              <p className="text-[#C09A50] text-sm font-medium mt-1">
-                {doctor.qualifications}
-              </p>
-              <p className="text-gray-500 text-sm mt-1">
-                {doctor.location}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+
 
     {/* CTA */}
     <section className="bg-[#FBF5E9] py-16 sm:py-20">

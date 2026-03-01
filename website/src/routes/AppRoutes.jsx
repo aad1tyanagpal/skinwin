@@ -4,6 +4,7 @@ import PageLayout from '../components/layout/PageLayout';
 
 // Page imports
 import Home from '../pages/home/Home';
+import About from '../pages/about/About';
 import Treatments from '../pages/treatments/Treatments';
 import SkinTreatments from '../pages/treatments/skin-treatments/SkinTreatments';
 import HydraFacial from '../pages/treatments/skin-treatments/face-rejuvenation/HydraFacial';
@@ -79,6 +80,7 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/treatments" element={<Treatments />} />
           <Route path="/treatments/skin-treatments" element={<SkinTreatments />} />
           <Route path="/treatments/skin-treatments/face-rejuvenation/hydra-facial" element={<HydraFacial />} />

@@ -3,28 +3,34 @@ import AnimateOnScroll from '../../../components/AnimateOnScroll';
 
 const doctors = [
   {
-    name: "Dr. Rittika Walia",
-    qualifications: "MBBS",
-    location: "Jaipur (Nirman Nagar)",
-    initials: "RW",
+    name: "Dr. Vijay Gakhar",
+    qualifications: "Senior Consultant",
+    initials: "VG",
   },
   {
-    name: "Dr. Parul Verma",
-    qualifications: "MDS",
-    location: "Jaipur (Vaishali Nagar)",
-    initials: "PV",
-  },
-  {
-    name: "Dr. Diwakar Sharma",
-    qualifications: "MBBS, MD Dermatology",
-    location: "Kota",
-    initials: "DS",
+    name: "Dr. Vibhuti Gakhar",
+    qualifications: "Consultant Dermatologist",
+    initials: "VBG",
   },
   {
     name: "Dr. Raina Arora",
-    qualifications: "MBBS, MD, DNB - Skin & VD",
-    location: "Ajmer",
+    qualifications: "MBBS, MD, DNB – Skin & VD, Fellowship in Laser & Hair Transplant",
     initials: "RA",
+  },
+  {
+    name: "Dr. Diwakar Sharma",
+    qualifications: "MBBS, MD – Dermatology",
+    initials: "DS",
+  },
+  {
+    name: "Dr. Deeksha Sharma",
+    qualifications: "BDS, SMS, Cosmetologist",
+    initials: "DKS",
+  },
+  {
+    name: "Dr. Sonali Gupta",
+    qualifications: "MBBS (Gold Medalist), MD – Skin & VD, SMS Jaipur",
+    initials: "SG",
   },
 ];
 
@@ -43,7 +49,7 @@ const DoctorProfiles = () => (
         </div>
       </AnimateOnScroll>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
         {doctors.map((doctor, i) => (
           <AnimateOnScroll key={doctor.name} delay={80 * i}>
           <div className="group text-center">

@@ -31,7 +31,7 @@ const CTABanner = () => (
         <AnimateOnScroll delay={150}>
         <div className="flex flex-col sm:flex-row gap-4 md:justify-end">
           <a
-            href="https://wa.me/919256444577?text=Hello!%20I'm%20interested%20in%20your%20services."
+            href="https://wa.me/919773311102?text=Hello!%20I'm%20interested%20in%20your%20services."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-green-600 text-white font-medium py-4 px-8 rounded-sm hover:bg-green-700 transition duration-300 text-sm uppercase tracking-wider"
@@ -40,7 +40,7 @@ const CTABanner = () => (
             Chat on WhatsApp
           </a>
           <a
-            href="tel:+919256444577"
+            href="tel:+919773311102"
             className="inline-flex items-center justify-center border-2 border-[#C09A50] text-[#C09A50] font-medium py-4 px-8 rounded-sm hover:bg-[#C09A50] hover:text-white transition duration-300 text-sm uppercase tracking-wider"
           >
             <PhoneIcon className="w-5 h-5 mr-2" />

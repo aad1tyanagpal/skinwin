@@ -63,7 +63,7 @@ const Header = ({ setActivePage, activePage }) => {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map(item => <NavLink key={item} page={item} />)}
-            <a href="tel:+919256444577" onClick={() => setIsOpen(false)} className="block w-full text-left bg-[#C09A50] text-white font-bold mt-2 py-2 px-3 rounded-md shadow-md hover:bg-[#B08A40] transition duration-300 text-sm">
+            <a href="tel:+919773311102" onClick={() => setIsOpen(false)} className="block w-full text-left bg-[#C09A50] text-white font-bold mt-2 py-2 px-3 rounded-md shadow-md hover:bg-[#B08A40] transition duration-300 text-sm">
               Book Consultation
             </a>
           </div>

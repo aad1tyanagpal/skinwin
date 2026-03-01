@@ -194,7 +194,7 @@ const Concerns = () => (
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://wa.me/919256444577?text=Hello!%20I%20need%20help%20choosing%20the%20right%20treatment."
+            href="https://wa.me/919773311102?text=Hello!%20I%20need%20help%20choosing%20the%20right%20treatment."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-green-600 text-white font-medium py-3 px-8 rounded-sm hover:bg-green-700 transition duration-300 tracking-widest text-sm uppercase"

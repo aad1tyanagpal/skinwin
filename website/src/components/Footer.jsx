@@ -23,7 +23,7 @@ const Footer = ({ setActivePage }) => (
         <div>
            <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">Support</h3>
           <ul className="mt-4 space-y-4">
-            <li><button onClick={() => setActivePage('after-care')} className="text-base text-gray-600 hover:text-gray-900">After Care</button></li>
+            {/* <li><button onClick={() => setActivePage('after-care')} className="text-base text-gray-600 hover:text-gray-900">After Care</button></li> */}
             <li><button onClick={() => setActivePage('contact')} className="text-base text-gray-600 hover:text-gray-900">Contact</button></li>
             <li>
               <button 
@@ -86,7 +86,7 @@ const Footer = ({ setActivePage }) => (
 
               {/* WhatsApp */}
               <a 
-                href="https://api.whatsapp.com/send/?phone=919256444577&text=Hello%21+I%27m+interested+in+your+services+and+would+like+to+know+more.&type=phone_number&app_absent=0" 
+                href="https://api.whatsapp.com/send/?phone=919773311102&text=Hello%21+I%27m+interested+in+your+services+and+would+like+to+know+more.&type=phone_number&app_absent=0" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
