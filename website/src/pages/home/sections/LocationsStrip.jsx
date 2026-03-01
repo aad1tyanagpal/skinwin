@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AnimateOnScroll from '../../components/AnimateOnScroll';
+import AnimateOnScroll from '../../../components/AnimateOnScroll';
 
 const locations = [
   { city: "Jaipur", areas: "Nirman Nagar & Vaishali Nagar", phone: "+91 92564 44577" },

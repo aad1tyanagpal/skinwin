@@ -1,5 +1,5 @@
 import React from 'react';
-import AnimateOnScroll from '../../components/AnimateOnScroll';
+import AnimateOnScroll from '../../../components/AnimateOnScroll';
 
 const WhatsAppIcon = ({ className = "w-5 h-5" }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">

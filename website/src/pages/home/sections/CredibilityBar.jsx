@@ -1,5 +1,5 @@
 import React from 'react';
-import AnimateOnScroll from '../../components/AnimateOnScroll';
+import AnimateOnScroll from '../../../components/AnimateOnScroll';
 
 const stats = [
   { number: "3,000+", label: "Satisfied Patients" },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AnimateOnScroll from '../../components/AnimateOnScroll';
+import AnimateOnScroll from '../../../components/AnimateOnScroll';
 
 const servicesData = [
   {

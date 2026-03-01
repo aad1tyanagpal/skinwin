@@ -1,5 +1,5 @@
 import React from 'react';
-import AnimateOnScroll from '../../components/AnimateOnScroll';
+import AnimateOnScroll from '../../../components/AnimateOnScroll';
 
 const ShieldCheckIcon = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
