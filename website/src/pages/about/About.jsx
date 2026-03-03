@@ -107,14 +107,15 @@ const doctorsData = [
 const About = () => (
   <div>
     {/* Hero Banner */}
-    <section className="relative bg-gray-900 py-20 sm:py-28 -mt-20">
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-800"></div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
-        <div className="gold-divider mx-auto mb-6"></div>
-        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-6">
+    <section className="bg-[#FBF5E9] py-16 sm:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p className="text-sm font-semibold text-[#C09A50] uppercase tracking-widest mb-3">
+          Behind the Clinic
+        </p>
+        <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl lg:text-6xl">
           About Skin Win
         </h1>
-        <p className="max-w-2xl mx-auto text-gray-300 text-lg leading-relaxed">
+        <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-700 font-light">
           Founded on the principle of providing world-class skin and hair care with an unwavering commitment to quality, privacy, and personalized attention.
         </p>
       </div>
@@ -174,7 +175,7 @@ const About = () => (
       </div>
     </section>
 
-{/* Meet Our Experts */}
+    {/* Meet Our Experts */}
     <section className="bg-white py-20 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -189,7 +190,7 @@ const About = () => (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {doctorsData.map((doctor) => (
             <div key={doctor.name} className="group bg-[#FBF5E9] rounded-2xl overflow-hidden border border-[#C09A50]/10 hover:border-[#C09A50]/40 hover:shadow-xl transition-all duration-300">
-              
+
               {/* Photo Area */}
               <div className="relative h-56 bg-gray-900 overflow-hidden">
                 {doctor.photo ? (
@@ -204,7 +205,6 @@ const About = () => (
                       <span className="font-serif text-6xl font-semibold text-[#C09A50]">
                         {doctor.initials}
                       </span>
-                      <p className="text-gray-500 text-xs mt-2 tracking-widest uppercase">Photo coming soon</p>
                     </div>
                   </div>
                 )}
@@ -214,7 +214,7 @@ const About = () => (
 
               {/* Content */}
               <div className="p-6">
-                
+
                 {/* Name & Role */}
                 <h3 className="font-serif text-xl font-semibold text-gray-900 leading-tight">
                   {doctor.name}
