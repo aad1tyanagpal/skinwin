@@ -4,7 +4,19 @@ import { Link } from 'react-router-dom';
 const MegaMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [expandedMobileItems, setExpandedMobileItems] = useState({});
   const dropdownTimeoutRef = useRef(null);
+
+  const toggleMobileItem = (itemName, e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setExpandedMobileItems(prev => ({
+      ...prev,
+      [itemName]: !prev[itemName]
+    }));
+  };
 
   const handleMouseEnter = (menuName) => {
     if (dropdownTimeoutRef.current) {
@@ -13,7 +25,7 @@ const MegaMenu = () => {
     setActiveDropdown(menuName);
   };
 
-const handleMouseLeave = () => {
+  const handleMouseLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
     }, 150);
@@ -311,59 +323,79 @@ const handleMouseLeave = () => {
     </div>
   );
 
-  const MobileNavLink = ({ item }) => (
-    <div>
-      {item.hasDropdown ? (
-        <div>
-          <Link
-            to={item.path}
-            onClick={() => { setIsOpen(false); closeDropdown(); }}
-            className="block px-3 py-2 text-base font-medium text-gray-900 border-b border-gray-200 hover:text-[#C09A50] transition-colors"
-          >
-            {item.name}
-          </Link>
-          <div className="pl-6 space-y-2">
-            {item.dropdownItems.map((dropdownItem, index) => (
-              <div key={index} className="space-y-1">
-                <Link
-                  to={dropdownItem.path}
-                  onClick={() => { setIsOpen(false); closeDropdown(); }}
-                  className="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-[#C09A50] hover:bg-gray-50 rounded-md"
-                >
-                  {dropdownItem.name}
-                </Link>
-                {dropdownItem.subItems?.map((subCategory, subIndex) => (
-                  <div key={subIndex} className="ml-4 space-y-1">
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wide px-3 py-1">
-                      {subCategory.category}
-                    </div>
-                    {subCategory.items.map((subItem, itemIndex) => (
+  const MobileNavLink = ({ item }) => {
+    const isExpanded = expandedMobileItems[item.name];
+
+    return (
+      <div className="border-b border-gray-200 last:border-0">
+        {item.hasDropdown ? (
+          <div>
+            <div className="flex items-center justify-between">
+              <Link
+                to={item.path}
+                onClick={() => { setIsOpen(false); closeDropdown(); }}
+                className="block px-3 py-3 text-base font-medium text-gray-900 hover:text-[#C09A50] transition-colors flex-grow"
+              >
+                {item.name}
+              </Link>
+              <button
+                onClick={(e) => toggleMobileItem(item.name, e)}
+                className="p-3 focus:outline-none flex items-center justify-center text-gray-500 hover:text-[#C09A50]"
+              >
+                <svg className={`w-5 h-5 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+            {isExpanded && (
+              <div className="pl-4 pb-2 space-y-2 bg-gray-50/50">
+                {item.dropdownItems.map((dropdownItem, index) => (
+                  <div key={index} className="space-y-1">
+                    <div className="px-3 py-2 text-sm font-bold text-gray-800">
                       <Link
-                        key={itemIndex}
-                        to={subItem.path}
+                        to={dropdownItem.path}
                         onClick={() => { setIsOpen(false); closeDropdown(); }}
-                        className="block px-3 py-1 text-sm text-gray-600 hover:text-[#C09A50] hover:bg-gray-50 rounded"
+                        className="hover:text-[#C09A50]"
                       >
-                        {subItem.name}
+                        {dropdownItem.name}
                       </Link>
+                    </div>
+                    {dropdownItem.subItems?.map((subCategory, subIndex) => (
+                      <div key={subIndex} className="ml-2 space-y-1 mb-2">
+                        <div className="text-xs font-semibold text-[#C09A50] uppercase tracking-wide px-3 py-1">
+                          {subCategory.category}
+                        </div>
+                        <div className="grid grid-cols-1 gap-1">
+                          {subCategory.items.map((subItem, itemIndex) => (
+                            <Link
+                              key={itemIndex}
+                              to={subItem.path}
+                              onClick={() => { setIsOpen(false); closeDropdown(); }}
+                              className="block px-4 py-1.5 text-sm text-gray-600 hover:text-[#C09A50] hover:bg-gray-100 rounded-md transition-colors"
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 ))}
               </div>
-            ))}
+            )}
           </div>
-        </div>
-      ) : (
-        <Link
-          to={item.path}
-          onClick={() => { setIsOpen(false); closeDropdown(); }}
-          className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-[#C09A50] hover:bg-gray-50 rounded-md"
-        >
-          {item.name}
-        </Link>
-      )}
-    </div>
-  );
+        ) : (
+          <Link
+            to={item.path}
+            onClick={() => { setIsOpen(false); closeDropdown(); }}
+            className="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#C09A50] hover:bg-gray-50 rounded-md"
+          >
+            {item.name}
+          </Link>
+        )}
+      </div>
+    )
+  };
 
   return (
     <nav className="nav-enter bg-white/80 backdrop-blur-sm fixed w-full z-50 top-0 shadow-md">
@@ -379,7 +411,7 @@ const handleMouseLeave = () => {
               {navItems.map(item => <NavLink key={item.name} item={item} />)}
             </div>
             <a
-            href="https://wa.me/919773311102?text=Hello%21+I%27d+like+to+book+a+consultation+at+Skin+Win+Clinic."
+              href="https://wa.me/919773311102?text=Hello%21+I%27d+like+to+book+a+consultation+at+Skin+Win+Clinic."
               target="_blank"
               rel="noopener noreferrer"
               className="ml-4 bg-[#C09A50] text-white font-bold py-2 px-5 rounded-lg shadow-md hover:bg-[#B08A40] transition duration-300 text-sm"
@@ -408,18 +440,18 @@ const handleMouseLeave = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+        <div className="md:hidden absolute top-20 left-0 w-full bg-white border-t border-gray-200 shadow-xl max-h-[calc(100vh-80px)] overflow-y-auto">
+          <div className="px-2 pt-2 pb-6 space-y-1 sm:px-3">
             {navItems.map(item => <MobileNavLink key={item.name} item={item} />)}
-                <a
-                  href="https://wa.me/919773311102?text=Hello%21+I%27d+like+to+book+a+consultation+at+Skin+Win+Clinic."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => { setIsOpen(false); closeDropdown(); }}
-                  className="block w-full text-left bg-[#C09A50] text-white font-bold mt-2 py-2 px-3 rounded-md shadow-md hover:bg-[#B08A40] transition duration-300 text-sm"
-                >
-                  Book Consultation
-                </a>
+            <a
+              href="https://wa.me/919773311102?text=Hello%21+I%27d+like+to+book+a+consultation+at+Skin+Win+Clinic."
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => { setIsOpen(false); closeDropdown(); }}
+              className="block w-full text-center bg-[#C09A50] text-white font-bold mt-4 py-3 px-4 rounded-lg shadow-md hover:bg-[#B08A40] transition duration-300 text-sm"
+            >
+              Book Consultation
+            </a>
           </div>
         </div>
       )}

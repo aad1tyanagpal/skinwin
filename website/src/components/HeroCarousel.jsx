@@ -14,6 +14,7 @@ const HeroCarousel = () => {
       title: "The Art of Radiance, Mastered by Science.",
       subtitle: "Advanced dermatology and skin treatments by expert doctors across Rajasthan.",
       image: "/results/HeroCarousel/1/Microtia%20Website%20Banner.png",
+      mobileImage: "/results/HeroCarousel/1/Microtia%20Website%20Banner.png", // Replace with portrait mobile image when available
       ctaPrimary: { text: "Explore Treatments", path: "/treatments" },
       ctaSecondary: { text: "Book Consultation", path: "/contact" },
     },
@@ -22,6 +23,7 @@ const HeroCarousel = () => {
       title: "Restore Your Hair. Regain Your Confidence.",
       subtitle: "FUE & DHI hair transplant with natural results. Over 3,000 successful procedures.",
       image: "/results/HeroCarousel/1/HT.png",
+      mobileImage: "/results/HeroCarousel/1/HT.png", // Replace with portrait mobile image when available
       ctaPrimary: { text: "Hair Transplant", path: "/treatments/hair-treatments/hair-loss/hair-transplant" },
       ctaSecondary: { text: "See Results", path: "/results" },
     },
@@ -30,6 +32,7 @@ const HeroCarousel = () => {
       title: "Precision Plastic Surgery. Beyond Expectations.",
       subtitle: "Board-certified surgeons. US-FDA approved technology. Absolute confidentiality.",
       image: "/results/HeroCarousel/1/Gynecomastia.png",
+      mobileImage: "/results/HeroCarousel/1/Gynecomastia.png", // Replace with portrait mobile image when available
       ctaPrimary: { text: "Plastic Surgery", path: "/plastic-surgery" },
       ctaSecondary: { text: "Meet Our Doctors", path: "/about" },
     },
@@ -74,7 +77,7 @@ const HeroCarousel = () => {
 
   return (
     <div
-      className="relative min-h-[calc(100vh-5rem)] overflow-hidden"
+      className="relative min-h-[85vh] sm:min-h-[calc(100vh-5rem)] overflow-hidden"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
       onTouchStart={handleTouchStart}
@@ -84,40 +87,48 @@ const HeroCarousel = () => {
       {slides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
-          }`}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
         >
+          {/* Desktop Image */}
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="hidden sm:block absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${slide.image})` }}
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20"></div>
           </div>
 
-          <div className="relative z-10 flex items-center justify-center h-full">
+          {/* Mobile Image */}
+          <div
+            className="block sm:hidden absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${slide.mobileImage || slide.image})` }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30"></div>
+          </div>
+
+          <div className="relative z-10 flex items-center justify-center h-full pt-10 sm:pt-0">
             {/* key forces remount on slide change, retriggering animations */}
             <div
               key={currentSlide}
               className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white"
             >
-              <div className="gold-divider mx-auto mb-8"></div>
-              <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-5 animate-fade-in-up leading-tight drop-shadow-lg">
+              <div className="gold-divider mx-auto mb-6 sm:mb-8"></div>
+              <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4 sm:mb-5 animate-fade-in-up leading-tight drop-shadow-lg">
                 {slide.title}
               </h1>
-              <p className="max-w-xl mx-auto text-sm md:text-base text-white/80 mb-10 animate-fade-in-up animation-delay-200 font-light leading-relaxed tracking-wide">
+              <p className="max-w-xl mx-auto text-sm md:text-base text-white/90 sm:text-white/80 mb-8 sm:mb-10 animate-fade-in-up animation-delay-200 font-light leading-relaxed tracking-wide">
                 {slide.subtitle}
               </p>
-              <div className="flex flex-row justify-center items-center gap-3 animate-fade-in-up animation-delay-400">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 animate-fade-in-up animation-delay-400">
                 <Link
                   to={slide.ctaPrimary.path}
-                  className="bg-[#C09A50] hover:bg-[#B08A40] text-white font-semibold py-3 px-7 rounded-lg shadow-lg transition duration-300 text-sm tracking-wide"
+                  className="w-full sm:w-auto bg-[#C09A50] hover:bg-[#B08A40] text-white font-semibold py-3 sm:py-3.5 px-8 rounded-lg shadow-lg transition duration-300 text-[15px] tracking-wide"
                 >
                   {slide.ctaPrimary.text}
                 </Link>
                 <Link
                   to={slide.ctaSecondary.path}
-                  className="bg-white/15 backdrop-blur-sm border border-white/30 hover:bg-white/25 text-white font-semibold py-3 px-7 rounded-lg transition duration-300 text-sm tracking-wide"
+                  className="w-full sm:w-auto bg-white/15 backdrop-blur-sm border border-white/30 hover:bg-white/25 text-white font-semibold py-3 sm:py-3.5 px-8 rounded-lg transition duration-300 text-[15px] tracking-wide"
                 >
                   {slide.ctaSecondary.text}
                 </Link>
@@ -154,11 +165,10 @@ const HeroCarousel = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-1 rounded-full transition-all duration-500 ${
-              index === currentSlide
+            className={`h-1 rounded-full transition-all duration-500 ${index === currentSlide
                 ? 'bg-gold w-10'
                 : 'bg-white/40 w-4 hover:bg-white/60'
-            }`}
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
