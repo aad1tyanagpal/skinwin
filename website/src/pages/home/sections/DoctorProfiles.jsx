@@ -4,33 +4,39 @@ import AnimateOnScroll from '../../../components/AnimateOnScroll';
 const doctors = [
   {
     name: "Dr. Vijay Gakhar",
-    qualifications: "Senior Consultant",
+    qualifications: "MBBS, MS (ENT)",
     initials: "VG",
+    image: "/doctors/vijay.png",
   },
   {
     name: "Dr. Vibhuti Gakhar",
-    qualifications: "Consultant Dermatologist",
+    qualifications: "MBBS, MS (Opthalmology)",
     initials: "VBG",
+    image: "/doctors/vibhhuti.png",
   },
   {
     name: "Dr. Raina Arora",
-    qualifications: "MBBS, MD, DNB – Skin & VD, Fellowship in Laser & Hair Transplant",
+    qualifications: "MBBS, MD, DNB (Skin & VD)",
     initials: "RA",
+    image: "/doctors/raina.png",
   },
   {
     name: "Dr. Diwakar Sharma",
-    qualifications: "MBBS, MD – Dermatology",
+    qualifications: "MBBS, MD (Dermatology)",
     initials: "DS",
+    image: "/doctors/diwakar.png",
   },
   {
     name: "Dr. Deeksha Sharma",
-    qualifications: "BDS, SMS, Cosmetologist",
+    qualifications: "BDS & Cosmetologist",
     initials: "DKS",
+    image: "/doctors/deeksha.png",
   },
   {
     name: "Dr. Sonali Gupta",
-    qualifications: "MBBS (Gold Medalist), MD – Skin & VD, SMS Jaipur",
+    qualifications: "MBBS (Gold Medalist), MD (Dermatology)",
     initials: "SG",
+    image: "/doctors/sonali.png",
   },
 ];
 
@@ -53,10 +59,14 @@ const DoctorProfiles = () => (
         {doctors.map((doctor, i) => (
           <AnimateOnScroll key={doctor.name} delay={80 * i}>
           <div className="group text-center">
-            <div className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 rounded-full overflow-hidden ring-2 ring-[#C09A50]/20 group-hover:ring-[#C09A50] transition-all duration-300 bg-gray-900 flex items-center justify-center">
-              <span className="font-serif text-3xl sm:text-4xl font-semibold text-[#C09A50]">
-                {doctor.initials}
-              </span>
+            <div className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center">
+              {doctor.image ? (
+                <img src={doctor.image} alt={doctor.name} className="w-full h-full object-cover" />
+              ) : (
+                <span className="font-serif text-3xl sm:text-4xl font-semibold text-[#C09A50]">
+                  {doctor.initials}
+                </span>
+              )}
             </div>
             <h3 className="font-serif text-lg sm:text-xl font-semibold text-gray-900">
               {doctor.name}
