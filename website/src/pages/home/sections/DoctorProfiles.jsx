@@ -10,7 +10,7 @@ const doctors = [
   },
   {
     name: "Dr. Vibhuti Gakhar",
-    qualifications: "MBBS, MS (Opthalmology)",
+    qualifications: "MBBS, MS (Ophthalmology)",
     initials: "VBG",
     image: "/doctors/vibhhuti.png",
   },
@@ -59,9 +59,9 @@ const DoctorProfiles = () => (
         {doctors.map((doctor, i) => (
           <AnimateOnScroll key={doctor.name} delay={80 * i}>
           <div className="group text-center">
-            <div className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center">
+            <div className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center ring-0 outline-none border-0">
               {doctor.image ? (
-                <img src={doctor.image} alt={doctor.name} className="w-full h-full object-cover" />
+                <img src={doctor.image} alt={doctor.name} className="w-full h-full object-cover outline-none border-0 ring-0" />
               ) : (
                 <span className="font-serif text-3xl sm:text-4xl font-semibold text-[#C09A50]">
                   {doctor.initials}

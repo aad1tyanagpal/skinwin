@@ -77,7 +77,7 @@ const HeroCarousel = () => {
 
   return (
     <div
-      className="relative min-h-[85vh] sm:min-h-[calc(100vh-5rem)] overflow-hidden"
+      className="relative min-h-[60vh] sm:min-h-[calc(100vh-5rem)] overflow-hidden"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
       onTouchStart={handleTouchStart}
@@ -99,11 +99,13 @@ const HeroCarousel = () => {
           </div>
 
           {/* Mobile Image */}
-          <div
-            className="block sm:hidden absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${slide.mobileImage || slide.image})` }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30"></div>
+          <div className="block sm:hidden absolute inset-0 bg-gray-900">
+            <img
+              src={slide.mobileImage || slide.image}
+              alt={slide.title}
+              className="w-full h-full object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/10"></div>
           </div>
 
           <div className="relative z-10 flex items-center justify-center h-full pt-10 sm:pt-0">

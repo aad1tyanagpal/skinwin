@@ -27,25 +27,25 @@ const contactData = [
     city: "Jaipur (Nirman Nagar)",
     phone: "+91 92564 44577",
     address: "121-122, Santosh Nagar, New Sanganer Road, Nirman Nagar, Jaipur-302020",
-    mapUrl: "https://maps.app.goo.gl/cTTHE5Vt4SMmWB6X60"
+    mapUrl: "https://maps.app.goo.gl/JsFVcb7rpx3AMrXz9"
   },
   {
     city: "Jaipur (Vaishali Nagar)", 
     phone: "+91 92570 43182",
     address: "Gakkhar Complex, B-7, Hanuman Nagar, Sirsi Road, Vaishali Nagar, Jaipur 302021",
-    mapUrl: "https://maps.app.goo.gl/cTTHE5Vt4SMmWB6X61"
+    mapUrl: "https://maps.app.goo.gl/M2bd8sJRNRrquSHP9"
   },
   {
     city: "Ajmer",
     phone: "+91 97733 11106", 
     address: "2nd Floor, Vijay ENT Hospital, St. Stephen Circle, Makarwali Road, Ajmer 305004",
-    mapUrl: "https://maps.app.goo.gl/cTTHE5Vt4SMmWB6X62"
+    mapUrl: "https://maps.app.goo.gl/EjvtMNzxo1bffn8U7"
   },
   {
     city: "Kota",
     phone: "+91 92570 33993",
     address: "Housing Board, 4-E-6, Rangbari, Kota, Rajasthan-3204010",
-    mapUrl: "https://maps.app.goo.gl/cTTHE5Vt4SMmWB6X63"
+    mapUrl: "https://maps.app.goo.gl/A9eXPHAniTLmEUkG8"
   },
 ];
 

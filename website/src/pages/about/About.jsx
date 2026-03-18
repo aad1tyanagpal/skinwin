@@ -50,57 +50,57 @@ const whyUsData = [
 const doctorsData = [
   {
     name: "Dr. Vijay Gakhar",
-    qualifications: "— (To be updated)",
+    qualifications: "MBBS, MS (ENT)",
     initials: "VG",
     role: "Senior Consultant",
     about: "Dr. Vijay Gakhar is a founding member of Skin Win Clinic and plays a key role in shaping the clinical direction of the practice. His expertise spans advanced aesthetic and dermatological procedures, ensuring every patient receives personalised, result-oriented care.",
     expertise: ["Hair Transplant", "Laser Treatments", "Aesthetic Procedures", "Patient Consultation"],
-    photo: null,
+    photo: "/doctors/vijay_big.png",
   },
   {
     name: "Dr. Vibhuti Gakhar",
-    qualifications: "— (To be updated)",
+    qualifications: "MBBS, MS (Ophthalmology)",
     initials: "VBG",
     role: "Consultant Dermatologist",
     about: "Dr. Vibhuti Gakhar brings a meticulous and patient-first approach to every consultation. As a co-founder of Skin Win, she has been instrumental in building a clinic culture rooted in transparency, ethical practice, and long-term skin health.",
     expertise: ["Skin Care & Treatments", "Cosmetology", "Pigmentation & Acne", "Medi-Facials"],
-    photo: null,
+    photo: "/doctors/vibhhuti_big.png",
   },
   {
     name: "Dr. Raina Arora",
-    qualifications: "MBBS · MD (Skin & VD) · DNB (Skin & VD) · Fellowship in Laser & Hair Transplant",
+    qualifications: "MBBS, MD, DNB (Skin & VD)",
     initials: "RA",
     role: "Dermatologist & Hair Transplant Surgeon",
     about: "Dr. Raina Arora holds a rare dual postgraduate qualification — MD and DNB in Skin & VD — along with a dedicated Fellowship in Laser procedures and Hair Transplant Surgery. Her advanced training makes her one of the most qualified specialists on our team for hair restoration and laser treatments.",
     expertise: ["Hair Transplant (FUE/DHI)", "Laser Hair Reduction", "PRP Therapy", "Skin & VD"],
-    photo: null,
+    photo: "/doctors/raina_big.png",
   },
   {
     name: "Dr. Diwakar Sharma",
-    qualifications: "MBBS · MD – Dermatology",
+    qualifications: "MBBS, MD (Dermatology)",
     initials: "DS",
     role: "Consultant Dermatologist",
     about: "Dr. Diwakar Sharma is an experienced dermatologist with strong grounding in both clinical and cosmetic dermatology. He is known for accurate diagnosis, effective treatment planning, and a calm, reassuring approach that puts patients at ease.",
     expertise: ["Clinical Dermatology", "Hair Loss Management", "Skin Disorders", "Laser Treatments"],
-    photo: null,
+    photo: "/doctors/diwakar_big.png",
   },
   {
     name: "Dr. Deeksha Sharma",
-    qualifications: "BDS · SMS · Cosmetologist",
+    qualifications: "BDS & Cosmetologist",
     initials: "DKS",
     role: "Aesthetic Cosmetologist",
     about: "Dr. Deeksha Sharma combines her training from SMS with specialized cosmetology expertise to deliver refined facial aesthetic treatments. Her understanding of facial structure and skin physiology makes her highly effective in non-surgical aesthetic procedures.",
     expertise: ["Botox & Fillers", "Anti-Aging Treatments", "Medi-Facials", "Skin Brightening"],
-    photo: null,
+    photo: "/doctors/deeksha_big.png",
   },
   {
     name: "Dr. Sonali Gupta",
-    qualifications: "MBBS – Gold Medalist, SMS Jaipur · MD (Skin & VD) – SMS Jaipur",
+    qualifications: "MBBS (Gold Medalist), MD (Dermatology)",
     initials: "SG",
     role: "Senior Dermatologist & Venereologist",
     about: "Dr. Sonali Gupta is a Gold Medalist from the prestigious Sawai Man Singh Medical College, Jaipur, with postgraduate specialization in Skin & VD from the same institution. Prior to joining Skin Win, she served as a Consultant at SVP Hospital and Shardaben Hospital, Ahmedabad — bringing institutional-level clinical depth to our practice.",
     expertise: ["Acne & Pigmentation", "Cosmetic Dermatology", "Laser Procedures", "Hair & Scalp Treatments"],
-    photo: null,
+    photo: "/doctors/sonali_big.png",
   },
 ];
 
@@ -192,12 +192,12 @@ const About = () => (
             <div key={doctor.name} className="group bg-[#FBF5E9] rounded-2xl overflow-hidden border border-[#C09A50]/10 hover:border-[#C09A50]/40 hover:shadow-xl transition-all duration-300">
 
               {/* Photo Area */}
-              <div className="relative h-56 bg-gray-900 overflow-hidden">
+              <div className="relative h-80 bg-gray-900 overflow-hidden">
                 {doctor.photo ? (
                   <img
                     src={doctor.photo}
                     alt={doctor.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style={{ objectPosition: 'center 20%' }}
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
@@ -219,12 +219,7 @@ const About = () => (
                 <h3 className="font-serif text-xl font-semibold text-gray-900 leading-tight">
                   {doctor.name}
                 </h3>
-                <p className="text-[#C09A50] text-sm font-medium mt-1">{doctor.role}</p>
-
-                {/* Qualifications */}
-                <p className="text-gray-400 text-xs mt-2 leading-relaxed border-t border-[#C09A50]/10 pt-3">
-                  {doctor.qualifications}
-                </p>
+                <p className="text-[#C09A50] text-sm font-medium mt-1">{doctor.qualifications}</p>
 
                 {/* About */}
                 <p className="text-gray-600 text-sm leading-relaxed mt-3">
