@@ -20,6 +20,7 @@ const Footer = () => (
           <ul className="mt-4 space-y-4 flex flex-col items-center sm:items-start">
             <li><Link to="/about" className="text-base text-gray-600 hover:text-[#C09A50] transition-colors">About</Link></li>
             <li><Link to="/results" className="text-base text-gray-600 hover:text-[#C09A50] transition-colors">Results</Link></li>
+            <li><Link to="/blogs" className="text-base text-gray-600 hover:text-[#C09A50] transition-colors">Blogs</Link></li>
             {/* <li><Link to="/pricing" className="text-base text-gray-600 hover:text-[#C09A50] transition-colors">Pricing</Link></li> */}
           </ul>
         </div>

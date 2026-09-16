@@ -246,6 +246,7 @@ const MegaMenu = () => {
     { name: 'Hair Transplant', path: '/treatments/hair-treatments/hair-loss/hair-transplant' },
     { name: 'Concerns', path: '/concerns' },
     { name: 'Results', path: '/results' },
+    { name: 'Blogs', path: '/blogs' },
     { name: 'Contact', path: '/contact' }
   ];
 
@@ -260,7 +261,7 @@ const MegaMenu = () => {
           <Link
             to={item.path}
             onClick={() => { setIsOpen(false); closeDropdown(); }}
-            className="flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 text-gray-600 hover:text-[#C09A50]"
+            className="flex items-center lg:whitespace-nowrap px-2.5 py-2 rounded-md text-sm font-medium transition-colors duration-300 text-gray-600 hover:text-[#C09A50]"
           >
             {item.name}
             <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -315,7 +316,7 @@ const MegaMenu = () => {
         <Link
           to={item.path}
           onClick={() => { setIsOpen(false); closeDropdown(); }}
-          className="block md:inline-block px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 text-gray-600 hover:text-[#C09A50]"
+          className="block md:inline-block lg:whitespace-nowrap px-2.5 py-2 rounded-md text-sm font-medium transition-colors duration-300 text-gray-600 hover:text-[#C09A50]"
         >
           {item.name}
         </Link>
@@ -401,7 +402,7 @@ const MegaMenu = () => {
     <nav className="nav-enter bg-white/80 backdrop-blur-sm fixed w-full z-50 top-0 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex items-center">
+          <div className="flex items-center flex-shrink-0">
             <Link to="/home" className="flex items-center">
               <img src="/logo.png" alt="Skin Win Clinic" className="h-10 w-auto object-contain" />
             </Link>

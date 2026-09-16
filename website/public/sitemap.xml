@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ponytail: hand-maintained. Add one <url> per new blog post; consider a
+     generation script reading src/data/blogPosts.js if this grows past ~30 posts. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.skinwin.co.in/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.skinwin.co.in/about</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.skinwin.co.in/treatments</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.skinwin.co.in/plastic-surgery</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.skinwin.co.in/concerns</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.skinwin.co.in/results</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.skinwin.co.in/locations</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.skinwin.co.in/contact</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.skinwin.co.in/blogs</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.skinwin.co.in/blogs/acne-scars-natural-vs-dermatologist-treatment</loc>
+    <priority>0.6</priority>
+  </url>
+</urlset>

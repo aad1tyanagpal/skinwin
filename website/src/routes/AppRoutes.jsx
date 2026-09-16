@@ -74,6 +74,8 @@ import Results from '../pages/results/Results';
 import Locations from '../pages/locations/Locations';
 import Contact from '../pages/contact/Contact';
 import PrivacyPolicy from '../components/PrivacyPolicy';
+import BlogList from '../pages/blogs/BlogList';
+import BlogPost from '../pages/blogs/BlogPost';
 
 
 const ScrollToTop = () => {
@@ -160,6 +162,8 @@ const AppRoutes = () => {
           <Route path="/results" element={<Results />} />
           <Route path="/locations" element={<Locations />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blogs" element={<BlogList />} />
+          <Route path="/blogs/:slug" element={<BlogPost />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </PageLayout>
