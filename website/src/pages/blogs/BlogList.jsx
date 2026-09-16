@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { blogPosts } from '../../data/blogPosts';
 import usePageSeo from '../../hooks/usePageSeo';
+import { publicUrl } from '../../utils/publicUrl';
 
 const POSTS_PER_PAGE = 6;
 
@@ -67,7 +68,7 @@ const BlogList = () => {
             </div>
             <Link to={`/blogs/${post.slug}`} className="block">
               <img
-                src={post.coverImage}
+                src={publicUrl(post.coverImage)}
                 alt={post.title}
                 className="w-full rounded-2xl shadow-sm border border-gray-100 hover:opacity-95 transition-opacity"
               />

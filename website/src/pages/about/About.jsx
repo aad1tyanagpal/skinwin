@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { publicUrl } from '../../utils/publicUrl';
 
 // Icons
 const ShieldCheckIcon = () => (
@@ -129,7 +130,7 @@ const About = () => (
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img
                 className="w-full h-[420px] lg:h-[500px] object-cover"
-                src="/results/HeroCarousel/1/PRP.png"
+                src={publicUrl("/results/HeroCarousel/1/PRP.png")}
                 alt="Skin Win Clinic"
               />
             </div>
@@ -195,7 +196,7 @@ const About = () => (
               <div className="relative h-80 bg-gray-900 overflow-hidden">
                 {doctor.photo ? (
                   <img
-                    src={doctor.photo}
+                    src={publicUrl(doctor.photo)}
                     alt={doctor.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style={{ objectPosition: 'center 20%' }}
                   />

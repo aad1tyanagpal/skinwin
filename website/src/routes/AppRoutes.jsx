@@ -88,7 +88,7 @@ const ScrollToTop = () => {
 
 const AppRoutes = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <PageLayout>
         <ScrollToTop />
         <Routes>

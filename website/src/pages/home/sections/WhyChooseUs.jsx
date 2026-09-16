@@ -1,5 +1,6 @@
 import React from 'react';
 import AnimateOnScroll from '../../../components/AnimateOnScroll';
+import { publicUrl } from '../../../utils/publicUrl';
 
 const ShieldCheckIcon = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -57,7 +58,7 @@ const WhyChooseUs = () => (
           <div className="rounded-lg overflow-hidden shadow-xl">
             <img
               className="w-full h-[420px] lg:h-[500px] object-cover"
-              src="/results/HeroCarousel/1/PRP.png"
+              src={publicUrl("/results/HeroCarousel/1/PRP.png")}
               alt="Skin Win Clinic"
             />
           </div>

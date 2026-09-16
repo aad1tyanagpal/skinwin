@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { publicUrl } from '../../utils/publicUrl';
 
 const skinConcerns = [
   {
@@ -102,7 +103,7 @@ const ConcernCard = ({ concern }) => (
     {concern.image ? (
       <div className="h-44 overflow-hidden">
         <img
-          src={concern.image}
+          src={publicUrl(concern.image)}
           alt={concern.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />

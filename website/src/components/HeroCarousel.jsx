@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { publicUrl } from '../utils/publicUrl';
 
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -93,7 +94,7 @@ const HeroCarousel = () => {
           {/* Desktop Image */}
           <div
             className="hidden sm:block absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${slide.image})` }}
+            style={{ backgroundImage: `url(${publicUrl(slide.image)})` }}
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20"></div>
           </div>
@@ -101,7 +102,7 @@ const HeroCarousel = () => {
           {/* Mobile Image */}
           <div className="block sm:hidden absolute inset-0 bg-gray-900">
             <img
-              src={slide.mobileImage || slide.image}
+              src={publicUrl(slide.mobileImage || slide.image)}
               alt={slide.title}
               className="w-full h-full object-cover object-top"
             />

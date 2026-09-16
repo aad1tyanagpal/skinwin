@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AnimateOnScroll from '../../../components/AnimateOnScroll';
+import { publicUrl } from '../../../utils/publicUrl';
 
 const showcaseData = [
   {
@@ -47,7 +48,7 @@ const BeforeAfterShowcase = () => (
               <div className="grid grid-cols-2">
                 <div className="relative">
                   <img
-                    src={item.before}
+                    src={publicUrl(item.before)}
                     alt={`${item.title} before`}
                     className="w-full h-56 object-cover"
                   />
@@ -57,7 +58,7 @@ const BeforeAfterShowcase = () => (
                 </div>
                 <div className="relative">
                   <img
-                    src={item.after}
+                    src={publicUrl(item.after)}
                     alt={`${item.title} after`}
                     className="w-full h-56 object-cover"
                   />

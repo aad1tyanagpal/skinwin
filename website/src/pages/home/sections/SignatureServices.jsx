@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AnimateOnScroll from '../../../components/AnimateOnScroll';
+import { publicUrl } from '../../../utils/publicUrl';
 
 const servicesData = [
   {
@@ -47,7 +48,7 @@ const SignatureServices = () => (
           >
             <img
               className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              src={service.imageUrl}
+              src={publicUrl(service.imageUrl)}
               alt={service.title}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>

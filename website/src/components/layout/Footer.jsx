@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { publicUrl } from '../../utils/publicUrl';
 
 const currentYear = new Date().getFullYear();
 
@@ -42,7 +43,7 @@ const Footer = () => (
         <div className="col-span-2 sm:col-span-1 flex flex-col items-center sm:items-start mt-6 sm:mt-0">
           <div className="mb-6 mb-8 sm:mb-6">
             <Link to="/home">
-              <img src="/logo.png" alt="Skin Win Clinic" className="h-10 md:h-12 w-auto object-contain mx-auto sm:mx-0" />
+              <img src={publicUrl("/logo.png")} alt="Skin Win Clinic" className="h-10 md:h-12 w-auto object-contain mx-auto sm:mx-0" />
             </Link>
           </div>
           <div className="w-full flex flex-col items-center sm:items-start">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { blogPosts } from '../../data/blogPosts';
 import usePageSeo from '../../hooks/usePageSeo';
+import { publicUrl } from '../../utils/publicUrl';
 
 const CheckIcon = () => (
   <svg className="w-5 h-5 text-[#C09A50] mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -65,7 +66,7 @@ const Section = ({ section }) => (
     {section.type === 'table' && (
       <figure>
         <img
-          src={section.image}
+          src={publicUrl(section.image)}
           alt={section.heading}
           className="w-full max-w-md mx-auto rounded-2xl shadow-sm border border-gray-100"
         />
@@ -129,7 +130,7 @@ const BlogPost = () => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <img
-          src={post.coverImage}
+          src={publicUrl(post.coverImage)}
           alt={post.title}
           className="w-full max-w-4xl mx-auto rounded-2xl mb-16 shadow-sm border border-gray-100"
         />

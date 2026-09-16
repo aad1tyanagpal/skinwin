@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { publicUrl } from '../../utils/publicUrl';
 
 const MegaMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -404,7 +405,7 @@ const MegaMenu = () => {
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center flex-shrink-0">
             <Link to="/home" className="flex items-center">
-              <img src="/logo.png" alt="Skin Win Clinic" className="h-10 w-auto object-contain" />
+              <img src={publicUrl("/logo.png")} alt="Skin Win Clinic" className="h-10 w-auto object-contain" />
             </Link>
           </div>
           <div className="hidden md:flex items-center">

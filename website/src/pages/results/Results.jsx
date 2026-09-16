@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../../components/Modal';
+import { publicUrl } from '../../utils/publicUrl';
 
 const resultsData = {
   skinCare: {
@@ -55,11 +56,11 @@ const BeforeAfterCard = ({ treatment, resultIndex = 1, openModal }) => {
   let beforeImage, afterImage;
 
   if (treatment.resultCount > 1) {
-    beforeImage = `/results/${treatment.folder}/${resultIndex}/${resultIndex}.png`;
-    afterImage = `/results/${treatment.folder}/${resultIndex}/${resultIndex}-${resultIndex}.png`;
+    beforeImage = publicUrl(`/results/${treatment.folder}/${resultIndex}/${resultIndex}.png`);
+    afterImage = publicUrl(`/results/${treatment.folder}/${resultIndex}/${resultIndex}-${resultIndex}.png`);
   } else {
-    beforeImage = `/results/${treatment.folder}/1.png`;
-    afterImage = `/results/${treatment.folder}/1-1.png`;
+    beforeImage = publicUrl(`/results/${treatment.folder}/1.png`);
+    afterImage = publicUrl(`/results/${treatment.folder}/1-1.png`);
   }
 
   return (
