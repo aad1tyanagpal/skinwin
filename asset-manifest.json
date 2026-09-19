@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/skinwin/static/css/main.1a40ace7.css",
-    "main.js": "/skinwin/static/js/main.1ffc7b2c.js",
+    "main.js": "/skinwin/static/js/main.a9477519.js",
     "index.html": "/skinwin/index.html",
     "main.1a40ace7.css.map": "/skinwin/static/css/main.1a40ace7.css.map",
-    "main.1ffc7b2c.js.map": "/skinwin/static/js/main.1ffc7b2c.js.map"
+    "main.a9477519.js.map": "/skinwin/static/js/main.a9477519.js.map"
   },
   "entrypoints": [
     "static/css/main.1a40ace7.css",
-    "static/js/main.1ffc7b2c.js"
+    "static/js/main.a9477519.js"
   ]
 }
