@@ -32,7 +32,7 @@ const FAQItem = ({ question, answer }) => {
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0'}`}
       >
-        <p className="text-gray-600 pr-4">{answer}</p>
+        <p className="text-gray-600 pr-4">{renderRichText(answer)}</p>
       </div>
     </div>
   );
@@ -40,6 +40,20 @@ const FAQItem = ({ question, answer }) => {
 
 const slugify = (text) =>
   text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+// Renders "[label](/path)" markdown-style links as clickable Link/anchor elements.
+const renderRichText = (text) =>
+  text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
+    const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (!match) return part;
+    const [, label, href] = match;
+    const linkClass = 'text-[#C09A50] font-medium hover:underline';
+    return href.startsWith('/') ? (
+      <Link key={i} to={href} className={linkClass}>{label}</Link>
+    ) : (
+      <a key={i} href={href} target="_blank" rel="noopener noreferrer" className={linkClass}>{label}</a>
+    );
+  });
 
 const Section = ({ section }) => (
   <section id={slugify(section.heading)} className="scroll-mt-24">
@@ -49,7 +63,7 @@ const Section = ({ section }) => (
     </div>
 
     {section.body && (
-      <p className="text-gray-600 leading-relaxed mb-6 text-lg">{section.body}</p>
+      <p className="text-gray-600 leading-relaxed mb-6 text-lg">{renderRichText(section.body)}</p>
     )}
 
     {section.type === 'list' && (
@@ -57,7 +71,7 @@ const Section = ({ section }) => (
         {section.items.map((item, i) => (
           <li key={i} className="flex items-start">
             <CheckIcon />
-            <span className="text-gray-700">{item}</span>
+            <span className="text-gray-700">{renderRichText(item)}</span>
           </li>
         ))}
       </ul>
@@ -68,7 +82,7 @@ const Section = ({ section }) => (
         <img
           src={publicUrl(section.image)}
           alt={section.heading}
-          className="w-full max-w-md mx-auto rounded-2xl shadow-sm border border-gray-100"
+          className={`w-full ${section.wide ? 'max-w-3xl' : 'max-w-md'} mx-auto rounded-2xl shadow-sm border border-gray-100`}
         />
         {section.caption && (
           <figcaption className="text-center text-gray-500 text-sm mt-4 max-w-2xl mx-auto">
@@ -79,6 +93,16 @@ const Section = ({ section }) => (
     )}
   </section>
 );
+
+const getReadingTime = (post) => {
+  const words = post.sections
+    .flatMap((s) => [s.body, ...(s.items || [])])
+    .concat((post.faqs || []).flatMap((f) => [f.question, f.answer]))
+    .filter(Boolean)
+    .join(' ')
+    .split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
+};
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -122,8 +146,9 @@ const BlogPost = () => {
             {post.title}
           </h1>
           <p className="mt-4 text-gray-500">
-            By {post.author} &middot;{' '}
+            Author {post.author} &middot;{' '}
             {new Date(post.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {' '}&middot; {getReadingTime(post)} min read
           </p>
         </div>
       </div>

@@ -4,15 +4,16 @@ import { blogPosts } from '../../data/blogPosts';
 import usePageSeo from '../../hooks/usePageSeo';
 import { publicUrl } from '../../utils/publicUrl';
 
-const POSTS_PER_PAGE = 6;
+const POSTS_PER_PAGE = 5;
 
 const BlogList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
   const page = Math.max(1, parseInt(searchParams.get('page') || '1', 10));
-  const totalPages = Math.max(1, Math.ceil(blogPosts.length / POSTS_PER_PAGE));
+  const totalPages = Math.max(1, Math.ceil(sortedPosts.length / POSTS_PER_PAGE));
   const currentPage = Math.min(page, totalPages);
   const start = (currentPage - 1) * POSTS_PER_PAGE;
-  const visiblePosts = blogPosts.slice(start, start + POSTS_PER_PAGE);
+  const visiblePosts = sortedPosts.slice(start, start + POSTS_PER_PAGE);
 
   usePageSeo({
     title: 'Skin & Hair Care Blog | Skin Win Clinic',
